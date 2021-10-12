@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">gradeCheckHHN</string>
+    <string name="semester_title">Semester: </string>
+    <string name="semester_class_title">Classes: </string>
+    <string name="semester_season">Season: </string>
+    <string name="semester_list_title">Semesters: </string>
+    <string name="add_class">Add Class</string>
+    <string name="add_semester">Add Semester</string>
+    <string name="add_semester_season_hint">Enter the season of the school term.</string>
+    <string name="add_semester_year">Year: </string>
+    <string name="add_semester_year_hint">Enter the year of the school term.</string>
+</resources>
