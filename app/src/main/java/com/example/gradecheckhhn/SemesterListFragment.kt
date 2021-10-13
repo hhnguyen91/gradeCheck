@@ -123,7 +123,7 @@ class SemesterListFragment : Fragment() {
 
         fun bind(semester: Semester) {
             this.semester = semester
-            seasonTextView.text = this.semester.season
+            seasonTextView.text = this.semester.season.uppercase()
             yearTextView.text = this.semester.year
             Log.i(TAG,"Binded ${this.semester.season} ${this.semester.year}")
         }

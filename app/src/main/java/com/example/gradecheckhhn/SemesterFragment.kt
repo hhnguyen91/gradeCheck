@@ -62,7 +62,7 @@ class SemesterFragment : Fragment() {
     }
 
     private fun updateUI() {
-        semesterTitle.text = "${semester.season} ${semester.year}"
+        semesterTitle.text = "${semester.season.uppercase()} ${semester.year}"
 
     }
 
