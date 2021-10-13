@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">gradeCheckHHN</string>
+    <string name="app_name">gradeCheck</string>
     <string name="semester_title">Semester: </string>
     <string name="semester_class_title">Classes: </string>
     <string name="semester_season">Season: </string>
