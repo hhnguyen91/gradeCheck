@@ -108,6 +108,7 @@ class SemesterListFragment : Fragment() {
         //Log.i(TAG, "Semester ${semesters[semesters.size -1].year} ${semesters[semesters.size -1].season}")
     }
 
+    // Handles the semester item functionality
     private inner class SemesterHolder(view: View)
         : RecyclerView.ViewHolder(view), View.OnClickListener {
 
@@ -135,6 +136,7 @@ class SemesterListFragment : Fragment() {
 
     }
 
+    // Bridge the database to the UI component
     private inner class SemesterAdapter(var semesters: List<Semester>)
         : RecyclerView.Adapter<SemesterHolder>(){
 
