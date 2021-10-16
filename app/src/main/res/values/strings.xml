@@ -9,6 +9,8 @@
     <string name="add_semester_season_hint">Enter the season of the school term.</string>
     <string name="add_semester_year">Year: </string>
     <string name="add_semester_year_hint">Enter the year of the school term.</string>
+    <string name="class_title">Class:</string>
+    <string name="class_assignment_title">Assignments:</string>
     <string name="class_course_name">Course Name: </string>
     <string name="class_department_name">Department Name: </string>
     <string name="class_section_number">Section Number: </string>

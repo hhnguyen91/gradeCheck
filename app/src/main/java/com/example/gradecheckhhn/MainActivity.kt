@@ -8,7 +8,8 @@ import java.util.*
 
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity(),
-    SemesterListFragment.Callbacks, AddSemesterFragment.Callbacks {
+    SemesterListFragment.Callbacks, AddSemesterFragment.Callbacks
+    ,SemesterClassListFragment.Callbacks{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,14 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
-
+    override fun onClassSelected(classId: UUID) {
+        Log.d(TAG,"MainActivity.onClassSelected: $classId")
+        val fragment = SemesterClassListFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
 
 }
