@@ -9,15 +9,15 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 
-class SemesterClassFragment : Fragment() {
+class CourseFragment : Fragment() {
 
-    private lateinit var SemesterClass: SemesterClass
+    private lateinit var course: Course
     private lateinit var courseNameField: EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SemesterClass = SemesterClass()
+        course = Course()
     }
 
     override fun onCreateView(
@@ -25,7 +25,7 @@ class SemesterClassFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_class,container,false)
+        val view = inflater.inflate(R.layout.fragment_course,container,false)
 
         courseNameField = view.findViewById(R.id.add_class_course_name) as EditText
 
@@ -52,7 +52,7 @@ class SemesterClassFragment : Fragment() {
                 before: Int,
                 count: Int
             ) {
-                SemesterClass.className = sequence.toString()
+                course.courseName = sequence.toString()
             }
 
             override fun afterTextChanged(sequence: Editable?) {

@@ -9,7 +9,7 @@ import java.util.*
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity(),
     SemesterListFragment.Callbacks, AddSemesterFragment.Callbacks
-    ,SemesterClassListFragment.Callbacks{
+    ,CourseListFragment.Callbacks{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onClassSelected(classId: UUID) {
         Log.d(TAG,"MainActivity.onClassSelected: $classId")
-        val fragment = SemesterClassListFragment()
+        val fragment = CourseListFragment()
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)

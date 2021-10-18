@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
 private const val TAG = "ClassListFragment"
-class SemesterClassListFragment : Fragment(){
+class CourseListFragment : Fragment(){
 
     interface Callbacks {
         fun onClassSelected(classId : UUID)
@@ -24,22 +24,22 @@ class SemesterClassListFragment : Fragment(){
 
     private var callbacks: Callbacks? = null
 
-    private lateinit var classRecyclerView: RecyclerView
+    private lateinit var courseRecyclerView: RecyclerView
 
     private var adapter: ClassAdapter = ClassAdapter(emptyList())
 
-    private val classListViewModel : SemesterClassListViewModel by lazy {
-        ViewModelProviders.of(this).get(SemesterClassListViewModel::class.java)
+    private val courseListViewModel : CourseListViewModel by lazy {
+        ViewModelProviders.of(this).get(CourseListViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG,"Whooho it works")
+        Log.d(TAG,"Wow it works")
     }
 
     companion object {
-        fun newInstance(): SemesterClassListFragment {
-            return SemesterClassListFragment()
+        fun newInstance(): CourseListFragment {
+            return CourseListFragment()
         }
     }
 
@@ -55,8 +55,8 @@ class SemesterClassListFragment : Fragment(){
     ): View? {
         val view = inflater.inflate(R.layout.fragment_semester,container, false)
 
-        classRecyclerView = view.findViewById((R.id.class_recycler_view)) as RecyclerView
-        classRecyclerView.layoutManager = LinearLayoutManager(context)
+        courseRecyclerView = view.findViewById((R.id.course_recycler_view)) as RecyclerView
+        courseRecyclerView.layoutManager = LinearLayoutManager(context)
 
         updateUI()
 
@@ -75,15 +75,15 @@ class SemesterClassListFragment : Fragment(){
     }
 
     private fun updateUI(){
-        val SemesterClass = classListViewModel.SemesterClasses
-        adapter = ClassAdapter(SemesterClass)
-        classRecyclerView.adapter = adapter
+        val course = courseListViewModel.courses
+        adapter = ClassAdapter(course)
+        courseRecyclerView.adapter = adapter
     }
 
     private inner class ClassHolder(view: View)
         :RecyclerView.ViewHolder(view), View.OnClickListener{
 
-        private lateinit var semesterClass : SemesterClass
+        private lateinit var course : Course
 
         private val classNameTextView: TextView = itemView.findViewById(R.id.class_title)
         private val classDepartmentTextView : TextView = itemView.findViewById(R.id.class_department_title)
@@ -93,23 +93,23 @@ class SemesterClassListFragment : Fragment(){
             itemView.setOnClickListener(this)
         }
 
-        fun bind (semesterClass: SemesterClass) {
-            this.semesterClass = semesterClass
-            classNameTextView.text = this.semesterClass.className
-            classDepartmentTextView.text = this.semesterClass.department
-            classSectionTextView.text = this.semesterClass.sectionNumber.toString()
+        fun bind (semesterClass: Course) {
+            this.course = semesterClass
+            classNameTextView.text = this.course.courseName
+            classDepartmentTextView.text = this.course.department
+            classSectionTextView.text = this.course.sectionNumber.toString()
         }
 
         override fun onClick(v: View?) {
-            Toast.makeText(context, "${semesterClass.className} pressed!", Toast.LENGTH_SHORT)
+            Toast.makeText(context, "${course.courseName} pressed!", Toast.LENGTH_SHORT)
                 .show()
         }
     }
 
-    private inner class ClassAdapter(var semesterClass: List<SemesterClass>)
+    private inner class ClassAdapter(var semesterClass: List<Course>)
         :RecyclerView.Adapter<ClassHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClassHolder {
-            val view = layoutInflater.inflate(R.layout.list_item_class,parent, false)
+            val view = layoutInflater.inflate(R.layout.list_item_course,parent, false)
             return ClassHolder(view)
         }
 
