@@ -3,14 +3,19 @@ package com.example.gradecheckhhn
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
+private const val TAG = "ClassListFragment"
 class SemesterClassListFragment : Fragment(){
 
     interface Callbacks {
@@ -20,10 +25,22 @@ class SemesterClassListFragment : Fragment(){
     private var callbacks: Callbacks? = null
 
     private lateinit var classRecyclerView: RecyclerView
-    private var adapter: ClassAcapter = ClassAdapter(emptyList())
 
-    private val classListViewModel : ClassListViewModel by lazy {
-        ViewModelProviders.of(this).get(ClassListViewModel::class.java)
+    private var adapter: ClassAdapter = ClassAdapter(emptyList())
+
+    private val classListViewModel : SemesterClassListViewModel by lazy {
+        ViewModelProviders.of(this).get(SemesterClassListViewModel::class.java)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d(TAG,"Whooho it works")
+    }
+
+    companion object {
+        fun newInstance(): SemesterClassListFragment {
+            return SemesterClassListFragment()
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -36,11 +53,20 @@ class SemesterClassListFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+        val view = inflater.inflate(R.layout.fragment_semester,container, false)
+
+        classRecyclerView = view.findViewById((R.id.class_recycler_view)) as RecyclerView
+        classRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        updateUI()
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Incomplete
     }
 
     override fun onDetach() {
@@ -48,16 +74,52 @@ class SemesterClassListFragment : Fragment(){
         callbacks = null
     }
 
+    private fun updateUI(){
+        val SemesterClass = classListViewModel.SemesterClasses
+        adapter = ClassAdapter(SemesterClass)
+        classRecyclerView.adapter = adapter
+    }
+
     private inner class ClassHolder(view: View)
         :RecyclerView.ViewHolder(view), View.OnClickListener{
 
-            fun bind (semesterClass: SemesterClass) {
+        private lateinit var semesterClass : SemesterClass
 
-            }
+        private val classNameTextView: TextView = itemView.findViewById(R.id.class_title)
+        private val classDepartmentTextView : TextView = itemView.findViewById(R.id.class_department_title)
+        private val classSectionTextView : TextView = itemView.findViewById(R.id.class_section_title)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        fun bind (semesterClass: SemesterClass) {
+            this.semesterClass = semesterClass
+            classNameTextView.text = this.semesterClass.className
+            classDepartmentTextView.text = this.semesterClass.department
+            classSectionTextView.text = this.semesterClass.sectionNumber.toString()
+        }
 
         override fun onClick(v: View?) {
-            callbacks?.onClassSelected(SemesterClass.id)
+            Toast.makeText(context, "${semesterClass.className} pressed!", Toast.LENGTH_SHORT)
+                .show()
         }
     }
+
+    private inner class ClassAdapter(var semesterClass: List<SemesterClass>)
+        :RecyclerView.Adapter<ClassHolder>() {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClassHolder {
+            val view = layoutInflater.inflate(R.layout.list_item_class,parent, false)
+            return ClassHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: ClassHolder, position: Int) {
+            val semesterClass = semesterClass[position]
+            holder.bind(semesterClass)
+        }
+        override fun getItemCount() = semesterClass.size
+
+        }
+
 
 }
