@@ -9,10 +9,10 @@ class CourseListViewModel : ViewModel() {
     init {
         for (i in 0 until 5)
         {
-            val course = Course()
-            course.courseName = "Class #$i"
-            course.department = "CECS"
-            course.sectionNumber = 9999;
+            //val course = Course()
+            //course.courseName = "Class #$i"
+            //course.department = "CECS"
+            //course.sectionNumber = 9999;
         }
     }
 }
