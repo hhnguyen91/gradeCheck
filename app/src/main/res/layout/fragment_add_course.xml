@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp">
 
+
     <TextView
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
@@ -49,11 +50,286 @@
         android:inputType="number"
         android:hint="@string/add_class_section_number_hint" />
 
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/class_breakdown"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <EditText
+            android:id="@+id/add_class_breakdown_item"
+            android:layout_width="160dp"
+            android:layout_height="48dp"
+            android:hint="@string/add_class_breakdown_item_hint" />
+
+        <EditText
+            android:id="@+id/add_class_breakdown_weight"
+            android:layout_width="140dp"
+            android:layout_height="48dp"
+            android:inputType="numberDecimal"
+            android:hint="@string/add_class_breakdown_weight_hint" />
+        <Button
+            android:id="@+id/add_class_breakdown_item_button"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/add_class_breakdown_item_button"
+            android:enabled="false"/>
+    </LinearLayout>
+
+    <!-- Grade Weight Title -->
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/class_grade_weight"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <!-- A -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_A"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/add_class_grade_weight_A_max"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:text="0"
+            android:gravity="center" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_dash"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/add_class_grade_weight_A_min"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:text="0"
+            android:gravity="center" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_percent"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- B -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_B"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/add_class_grade_weight_B_max"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:text="0"
+            android:gravity="center" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_dash"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/add_class_grade_weight_B_min"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:text="0"
+            android:gravity="center" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_percent"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- C -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_C"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/add_class_grade_weight_C_max"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:text="0"
+            android:gravity="center" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_dash"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/add_class_grade_weight_C_min"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:text="0"
+            android:gravity="center" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_percent"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- D -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_D"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/add_class_grade_weight_D_max"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:text="0"
+            android:gravity="center" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_dash"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/add_class_grade_weight_D_min"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:text="0"
+            android:gravity="center" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_percent"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- F -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_F"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/add_class_grade_weight_F_max"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:text="0"
+            android:gravity="center" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_dash"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/add_class_grade_weight_F_min"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:text="0"
+            android:gravity="center" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/class_grade_weight_percent"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/add_class_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add_class"
         android:enabled="false"/>
-
 </LinearLayout>
