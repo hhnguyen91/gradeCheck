@@ -1,5 +1,6 @@
 package com.example.gradecheckhhn
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 
 class CourseListViewModel : ViewModel() {
@@ -14,5 +15,10 @@ class CourseListViewModel : ViewModel() {
             //course.department = "CECS"
             //course.sectionNumber = 9999;
         }
+    }
+
+    fun addCourse(course :Course) {
+        Log.d("MainActivity","Hello")
+        // Incomplete missing repo.add()
     }
 }
