@@ -5,17 +5,9 @@ import androidx.lifecycle.ViewModel
 
 class CourseListViewModel : ViewModel() {
 
-    var courses = mutableListOf<Course>()
+    private val courseRepository = CourseRepository.get()
 
-    init {
-        for (i in 0 until 5)
-        {
-            //val course = Course()
-            //course.courseName = "Class #$i"
-            //course.department = "CECS"
-            //course.sectionNumber = 9999;
-        }
-    }
+    val courseListLiveData = courseRepository.getCourses()
 
     fun addCourse(course :Course) {
         Log.d("MainActivity","Hello")

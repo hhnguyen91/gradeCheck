@@ -6,6 +6,7 @@
         <entry key="..\:/Github/gradeCheck/app/src/main/res/drawable/ic_launcher_background.xml" value="0.18" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/activity_main.xml" value="0.14" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_add_class.xml" value="0.1" />
+        <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_add_course.xml" value="0.22" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_add_semester.xml" value="0.25" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_class.xml" value="0.3416666666666667" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_class_list.xml" value="0.1" />
@@ -13,6 +14,7 @@
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_semester.xml" value="0.25" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_semester_list.xml" value="0.25" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/list_item_class.xml" value="0.11911231884057971" />
+        <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/list_item_course.xml" value="0.2749094202898551" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/list_item_semester.xml" value="0.22" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/menu/fragment_class_list.xml" value="0.22" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/menu/fragment_course_list.xml" value="0.3625" />

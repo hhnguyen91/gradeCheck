@@ -30,11 +30,13 @@ class CourseListFragment : Fragment(){
         ViewModelProviders.of(this).get(CourseListViewModel::class.java)
     }
 
+    /*
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG,"Wow it works")
         setHasOptionsMenu(true)
     }
+     */
 
     companion object {
         fun newInstance(): CourseListFragment {
@@ -56,14 +58,24 @@ class CourseListFragment : Fragment(){
 
         courseRecyclerView = view.findViewById((R.id.course_recycler_view)) as RecyclerView
         courseRecyclerView.layoutManager = LinearLayoutManager(context)
-
-        updateUI()
+        courseRecyclerView.adapter = adapter
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Page 238, but for now this gives me a constant error
+        /*
+        courseListViewModel.courseListLiveData.observe(
+            viewLifecycleOwner,
+            Observer { courses ->
+                courses?.let {
+                    Log.i(TAG,"Got course $courses.size}")
+                    updateUI(courses)
+            }
+
+            })*/
 
         // Incomplete
     }
@@ -73,9 +85,8 @@ class CourseListFragment : Fragment(){
         callbacks = null
     }
 
-    private fun updateUI(){
-        val course = courseListViewModel.courses
-        adapter = ClassAdapter(course)
+    private fun updateUI(courses:List<Course>){
+        adapter = ClassAdapter(courses)
         courseRecyclerView.adapter = adapter
     }
 
