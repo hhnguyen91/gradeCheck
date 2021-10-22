@@ -10,7 +10,7 @@ data class Course (@PrimaryKey val CourseID: UUID = UUID.randomUUID(),
                    //@ForeignKey val semesterCourseID: UUID,
                    var courseName: String = "",
                    var department: String = "",
-                   var sectionNumber: Number = 0
+                   var sectionNumber: Int = 0
 // List of Breakdown Var go here
 // A Grade Rate
 // B Grade Rate

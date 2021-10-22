@@ -18,11 +18,12 @@ interface CourseDao {
     @Query("SELECT * FROM course WHERE CourseID=(:id)")
     fun getCourse(id: UUID): LiveData<Course?>
 
+    /*
     @Update
     fun updateCourse(course: Course)
 
     @Insert
     fun addCourse(course: Course)
-
+    */
 
 }

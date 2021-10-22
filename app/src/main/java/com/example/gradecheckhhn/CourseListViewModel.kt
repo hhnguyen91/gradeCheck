@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 class CourseListViewModel : ViewModel() {
 
     private val courseRepository = CourseRepository.get()
-
     val courseListLiveData = courseRepository.getCourses()
 
     fun addCourse(course :Course) {

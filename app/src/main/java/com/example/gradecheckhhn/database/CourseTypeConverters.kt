@@ -16,4 +16,6 @@ class CourseTypeConverters {
     fun fromCourseID(uuid: UUID?): String? {
         return uuid?.toString()
     }
+
+
 }
