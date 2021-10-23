@@ -94,6 +94,7 @@ class SemesterListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.new_semester -> {
+                Log.d(TAG,"Directing user to create semester form")
                 callbacks?.onAddSemesterSelected()
                 true
             }

@@ -68,7 +68,12 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onAddCourseSelected() {
-        Log.d(TAG,"Add Semester")
+        val fragment = AddCourseFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container,fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onAddCourseButtonClicked() {

@@ -28,6 +28,7 @@ class CourseListFragment : Fragment(){
 
     interface Callbacks {
         fun onClassSelected(courseId : UUID)
+        //Should Direct user to create course Screen
         fun onAddCourseSelected()
     }
 

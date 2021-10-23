@@ -1,3 +1,4 @@
+@file:Suppress("DEPRECATION")
 package com.example.gradecheckhhn
 
 import android.os.Bundle
@@ -6,7 +7,6 @@ import android.view.*
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.Observer
 import java.util.*
@@ -18,6 +18,8 @@ class SemesterFragment : Fragment() {
 
     private lateinit var semester: Semester
     private lateinit var semesterTitle: TextView
+
+    private var callbacks: CourseListFragment.Callbacks? = null
 
     private val semesterDetailViewModel: SemesterDetailViewModel by lazy {
         ViewModelProviders.of(this).get(SemesterDetailViewModel::class.java)
@@ -70,6 +72,17 @@ class SemesterFragment : Fragment() {
 
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            R.id.new_course ->
+            {
+                Log.d(TAG,"Directing user to create course form")
+                callbacks?.onAddCourseSelected()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
     companion object {
         fun newInstance(semesterId: UUID): SemesterFragment {
             val args = Bundle().apply {
