@@ -9,7 +9,7 @@ import java.util.*
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity(),
     SemesterListFragment.Callbacks, AddSemesterFragment.Callbacks
-    ,CourseListFragment.Callbacks{
+    ,CourseListFragment.Callbacks, AddCourseFragment.Callbacks{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onAddSemesterButtonClicked() {
+        Log.d(TAG,"Add Semester")
         val fragment = SemesterListFragment()
         supportFragmentManager
             .beginTransaction()
@@ -58,6 +59,20 @@ class MainActivity : AppCompatActivity(),
 
     override fun onClassSelected(classId: UUID) {
         Log.d(TAG,"MainActivity.onClassSelected: $classId")
+        val fragment = CourseListFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun onAddCourseSelected() {
+        Log.d(TAG,"Add Semester")
+    }
+
+    override fun onAddCourseButtonClicked() {
+        Log.d(TAG,"Add Course")
         val fragment = CourseListFragment()
         supportFragmentManager
             .beginTransaction()

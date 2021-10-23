@@ -16,10 +16,6 @@ import java.util.*
 private const val TAG = "ClassListFragment"
 class CourseListFragment : Fragment(){
 
-    interface Callbacks {
-        fun onClassSelected(classId : UUID)
-    }
-
     private var callbacks: Callbacks? = null
 
     private lateinit var courseRecyclerView: RecyclerView
@@ -30,13 +26,17 @@ class CourseListFragment : Fragment(){
         ViewModelProviders.of(this).get(CourseListViewModel::class.java)
     }
 
-    /*
+    interface Callbacks {
+        fun onClassSelected(courseId : UUID)
+        fun onAddCourseSelected()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG,"Wow it works")
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
     }
-     */
+
 
     companion object {
         fun newInstance(): CourseListFragment {
@@ -103,16 +103,15 @@ class CourseListFragment : Fragment(){
             itemView.setOnClickListener(this)
         }
 
-        fun bind (semesterClass: Course) {
-            this.course = semesterClass
+        fun bind (course: Course) {
+            this.course = course
             classNameTextView.text = this.course.courseName
             classDepartmentTextView.text = this.course.department
             classSectionTextView.text = this.course.sectionNumber.toString()
         }
 
         override fun onClick(v: View?) {
-            Toast.makeText(context, "${course.courseName} pressed!", Toast.LENGTH_SHORT)
-                .show()
+            callbacks?.onClassSelected(course.CourseID)
         }
     }
 

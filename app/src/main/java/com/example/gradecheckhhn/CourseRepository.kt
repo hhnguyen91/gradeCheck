@@ -6,6 +6,7 @@ import androidx.room.Room
 import com.example.gradecheckhhn.database.CourseDatabase
 import java.lang.IllegalStateException
 import java.util.*
+import java.util.concurrent.Executors
 
 private const val DATABASE_NAME = "course-database"
 class CourseRepository private constructor(context: Context) {
@@ -17,10 +18,17 @@ class CourseRepository private constructor(context: Context) {
     ).build()
 
     private val courseDao = database.courseDAO()
+    private val executor = Executors.newSingleThreadExecutor()
 
     fun getCourses(): LiveData<List<Course>> = courseDao.getCourses()
 
     fun getCourse(id: UUID): LiveData<Course?> = courseDao.getCourse(id)
+
+    fun addCourse(course: Course) {
+        executor.execute {
+            courseDao.addCourse(course)
+        }
+    }
 
     companion object {
         private var INSTANCE: CourseRepository? = null
