@@ -2,9 +2,7 @@ package com.example.gradecheckhhn
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -31,7 +29,8 @@ class SemesterFragment : Fragment() {
         val semesterId: UUID = arguments?.getSerializable(ARG_SEMESTER_ID) as UUID
         Log.i(TAG,"Semester $semesterId selected")
         semesterDetailViewModel.loadSemester(semesterId)
-
+        // Must be true for the app bar change to happen
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -59,6 +58,11 @@ class SemesterFragment : Fragment() {
                 }
             }
         )
+    }
+
+    // Change the menu from adding semester to course
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.fragment_course_list,menu)
     }
 
     private fun updateUI() {
