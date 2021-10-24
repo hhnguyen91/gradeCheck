@@ -16,6 +16,7 @@ import java.util.*
 private const val TAG = "ClassListFragment"
 class CourseListFragment : Fragment(){
 
+    /*
     private var callbacks: Callbacks? = null
 
     private lateinit var courseRecyclerView: RecyclerView
@@ -31,7 +32,6 @@ class CourseListFragment : Fragment(){
         //Should Direct user to create course Screen
         fun onAddCourseSelected()
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG,"Wow it works")
@@ -147,5 +147,6 @@ class CourseListFragment : Fragment(){
             else -> return super.onOptionsItemSelected(item)
         }
     }
+    */
 
 }
