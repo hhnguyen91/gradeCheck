@@ -141,8 +141,6 @@ class AddCourseFragment : Fragment() {
         addCourseButton.setOnClickListener{
             Toast.makeText(context,"" +
                     "${course.courseName} \n " +
-                    "${course.department} \n " +
-                    "${course.sectionNumber} \n" +
                     "Added!", Toast.LENGTH_SHORT).show()
             addCourseViewModel.addCourse(course)
             callbacks?.onAddCourseButtonClicked()
