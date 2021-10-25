@@ -29,4 +29,6 @@
     <string name="add_class_breakdown_item_hint">Enter the item.</string>
     <string name="add_class_breakdown_weight_hint">Enter the weight.</string>
     <string name="add_class_breakdown_item_button">ADD</string>
+    <string name="edit_Text">Edit</string>
+    <string name="update_Text">Update</string>
 </resources>
