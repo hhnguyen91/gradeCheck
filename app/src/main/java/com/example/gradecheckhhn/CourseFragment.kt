@@ -8,6 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import java.util.*
+
+private const val TAG = "CourseFragment"
+private const val ARG_COURSE_ID = "course_id"
 
 class CourseFragment : Fragment() {
 
@@ -62,5 +66,16 @@ class CourseFragment : Fragment() {
 
         courseNameField.addTextChangedListener(titleMatcher)
 
+    }
+
+    companion object {
+        fun newInstance(courseId: UUID): CourseFragment {
+            val args = Bundle().apply {
+                putSerializable(ARG_COURSE_ID, courseId)
+            }
+            return CourseFragment().apply{
+                arguments = args
+            }
+        }
     }
 }

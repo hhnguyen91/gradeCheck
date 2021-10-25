@@ -57,9 +57,9 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
-    override fun onCourseSelected(classId: UUID) {
-        Log.d(TAG,"MainActivity.onClassSelected: $classId")
-        val fragment = CourseListFragment()
+    override fun onCourseSelected(courseId: UUID) {
+        Log.d(TAG,"MainActivity.onClassSelected: $courseId")
+        val fragment = CourseFragment.newInstance(courseId)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onAddCourseButtonClicked() {
         Log.d(TAG,"Add Course")
-        val fragment = CourseListFragment()
+        val fragment = SemesterFragment()
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
