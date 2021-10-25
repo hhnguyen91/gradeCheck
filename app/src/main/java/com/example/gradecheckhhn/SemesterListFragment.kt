@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -35,6 +36,7 @@ class SemesterListFragment : Fragment() {
 
     interface Callbacks {
         fun onSemesterSelected(semesterId: UUID)
+        fun onEditSemesterPressed(semesterId: UUID)
         fun onAddSemesterSelected()
 
     }
@@ -118,9 +120,17 @@ class SemesterListFragment : Fragment() {
         //TextViews for the semester view on the SemesterList fragment
         private val seasonTextView: TextView = itemView.findViewById(R.id.semester_season)
         private val yearTextView: TextView = itemView.findViewById(R.id.semester_year)
+        private val editButton: Button = itemView.findViewById(R.id.edit_Button)
+        private val deleteButton: Button = itemView.findViewById(R.id.delete_Button)
+
+
 
         init {
             itemView.setOnClickListener(this)
+            //editButton.setOnClickListener()
+            editButton.setOnClickListener{
+                callbacks?.onEditSemesterPressed(semester.id)
+            }
         }
 
         fun bind(semester: Semester) {

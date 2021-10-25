@@ -9,7 +9,7 @@ import java.util.*
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity(),
     SemesterListFragment.Callbacks, AddSemesterFragment.Callbacks
-    ,SemesterFragment.Callbacks, AddCourseFragment.Callbacks{
+    ,SemesterFragment.Callbacks, AddCourseFragment.Callbacks, SemesterEditFragment.Callbacks{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +31,15 @@ class MainActivity : AppCompatActivity(),
     override fun onSemesterSelected(semesterId: UUID) {
         Log.d(TAG, "MainActivity.onCrimeSelected: $semesterId")
         val fragment = SemesterFragment.newInstance(semesterId)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun onEditSemesterPressed(semesterId: UUID) {
+        val fragment = SemesterEditFragment.newInstance(semesterId)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
@@ -79,6 +88,15 @@ class MainActivity : AppCompatActivity(),
     override fun onAddCourseButtonClicked() {
         Log.d(TAG,"Add Course")
         val fragment = SemesterFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun onUpdateSemesterSelected() {
+        val fragment = SemesterListFragment()
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
