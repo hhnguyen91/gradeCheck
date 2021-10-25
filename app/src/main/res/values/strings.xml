@@ -12,9 +12,13 @@
     <string name="class_title">Class:</string>
     <string name="class_assignment_title">Assignments:</string>
     <string name="class_course_name">Course Name: </string>
-    <string name="class_department_name">Department Name: </string>
-    <string name="class_section_number">Section Number: </string>
     <string name="class_breakdown">Breakdown: </string>
+    <string name="class_breakdown_1">1. </string>
+    <string name="class_breakdown_2">2. </string>
+    <string name="class_breakdown_3">3. </string>
+    <string name="class_breakdown_4">4. </string>
+    <string name="class_breakdown_5">5. </string>
+    <string name="class_breakdown_6">6. </string>
     <string name="class_grade_weight">Grade Weight: </string>
     <string name="class_grade_weight_A">A: </string>
     <string name="class_grade_weight_B">B: </string>
