@@ -135,15 +135,6 @@ class SemesterListFragment : Fragment() {
             }
             deleteButton.setOnClickListener{
                 deleteSemester(this.semester)
-                //update UI after semester has been deleted
-                semesterListViewModel.semesterListLiveData.observe(
-                    viewLifecycleOwner,
-                    Observer { semesters ->
-                        semesters?.let {
-                            updateUI(semesters)
-                        }
-                    }
-                )
             }
         }
 
@@ -188,6 +179,7 @@ class SemesterListFragment : Fragment() {
         builder.setMessage("Are you sure you want to delete ${semester.season.uppercase()} ${semester.year}?")
         builder.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id->
             semesterListViewModel.deleteSemester(semester)
+
             Toast.makeText(context, "${semester.season.uppercase()} ${semester.year} deleted", Toast.LENGTH_SHORT)
                 .show()
             dialog.cancel()
