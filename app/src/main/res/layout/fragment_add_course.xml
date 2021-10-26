@@ -25,34 +25,6 @@
             android:layout_height="48dp"
             android:hint="@string/add_class_course_name_hint" />
 
-        <TextView
-            style="?android:listSeparatorTextViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/class_department_name"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/add_class_department_name"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="@string/add_class_department_name_hint" />
-
-        <TextView
-            style="?android:listSeparatorTextViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/class_section_number"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/add_class_section_number"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:inputType="number"
-            android:hint="@string/add_class_section_number_hint" />
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
@@ -62,28 +34,155 @@
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
+        <!-- Breakdown 1 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_breakdown_1"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
             <EditText
-                android:id="@+id/add_class_breakdown_item"
+                android:id="@+id/add_class_breakdown_item_1"
                 android:layout_width="160dp"
                 android:layout_height="48dp"
                 android:hint="@string/add_class_breakdown_item_hint" />
 
             <EditText
-                android:id="@+id/add_class_breakdown_weight"
+                android:id="@+id/add_class_breakdown_weight_1"
                 android:layout_width="140dp"
                 android:layout_height="48dp"
                 android:inputType="numberDecimal"
                 android:hint="@string/add_class_breakdown_weight_hint" />
-            <Button
-                android:id="@+id/add_class_breakdown_item_button"
-                android:layout_width="match_parent"
+        </LinearLayout>
+        <!-- Breakdown 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:text="@string/add_class_breakdown_item_button"
-                android:enabled="false"/>
+                android:text="@string/class_breakdown_2"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/add_class_breakdown_item_2"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:hint="@string/add_class_breakdown_item_hint" />
+
+            <EditText
+                android:id="@+id/add_class_breakdown_weight_2"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:inputType="numberDecimal"
+                android:hint="@string/add_class_breakdown_weight_hint" />
+        </LinearLayout>
+        <!-- Breakdown 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_breakdown_3"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/add_class_breakdown_item_3"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:hint="@string/add_class_breakdown_item_hint" />
+
+            <EditText
+                android:id="@+id/add_class_breakdown_weight_3"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:inputType="numberDecimal"
+                android:hint="@string/add_class_breakdown_weight_hint" />
+        </LinearLayout>
+        <!-- Breakdown 4 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_breakdown_4"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/add_class_breakdown_item_4"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:hint="@string/add_class_breakdown_item_hint" />
+
+            <EditText
+                android:id="@+id/add_class_breakdown_weight_4"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:inputType="numberDecimal"
+                android:hint="@string/add_class_breakdown_weight_hint" />
+        </LinearLayout>
+        <!-- Breakdown 5 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_breakdown_5"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/add_class_breakdown_item_5"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:hint="@string/add_class_breakdown_item_hint" />
+
+            <EditText
+                android:id="@+id/add_class_breakdown_weight_5"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:inputType="numberDecimal"
+                android:hint="@string/add_class_breakdown_weight_hint" />
+        </LinearLayout>
+        <!-- Breakdown 6 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_breakdown_6"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/add_class_breakdown_item_6"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:hint="@string/add_class_breakdown_item_hint" />
+
+            <EditText
+                android:id="@+id/add_class_breakdown_weight_6"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:inputType="numberDecimal"
+                android:hint="@string/add_class_breakdown_weight_hint" />
         </LinearLayout>
 
         <!-- Grade Weight Title -->
@@ -113,7 +212,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:inputType="number"
-                android:text="0"
+                android:text="100"
                 android:gravity="center" />
 
             <TextView
@@ -130,7 +229,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:inputType="number"
-                android:text="0"
+                android:text="90"
                 android:gravity="center" />
 
             <TextView
@@ -160,7 +259,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:inputType="number"
-                android:text="0"
+                android:text="89"
                 android:gravity="center" />
 
             <TextView
@@ -177,7 +276,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:inputType="number"
-                android:text="0"
+                android:text="80"
                 android:gravity="center" />
 
             <TextView
@@ -207,7 +306,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:inputType="number"
-                android:text="0"
+                android:text="79"
                 android:gravity="center" />
 
             <TextView
@@ -224,7 +323,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:inputType="number"
-                android:text="0"
+                android:text="70"
                 android:gravity="center" />
 
             <TextView
@@ -254,7 +353,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:inputType="number"
-                android:text="0"
+                android:text="69"
                 android:gravity="center" />
 
             <TextView
@@ -271,7 +370,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:inputType="number"
-                android:text="0"
+                android:text="60"
                 android:gravity="center" />
 
             <TextView
@@ -301,7 +400,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:inputType="number"
-                android:text="0"
+                android:text="59"
                 android:gravity="center" />
 
             <TextView

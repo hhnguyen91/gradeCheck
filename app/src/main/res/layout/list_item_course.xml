@@ -10,16 +10,4 @@
         android:layout_height="wrap_content"
         android:text="Class Course" />
 
-    <TextView
-        android:id="@+id/class_department_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Department Name" />
-
-    <TextView
-        android:id="@+id/class_section_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Class Section ID" />
-
 </LinearLayout>
