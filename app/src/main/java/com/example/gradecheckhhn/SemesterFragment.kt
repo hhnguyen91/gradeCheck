@@ -133,8 +133,6 @@ class SemesterFragment : Fragment() {
         private lateinit var course: Course
 
         private val courseNameTextView: TextView = itemView.findViewById(R.id.class_title)
-        private val courseDepartmentTextView : TextView = itemView.findViewById(R.id.class_department_title)
-        private val courseSectionTextView : TextView = itemView.findViewById(R.id.class_section_title)
 
         init {
             itemView.setOnClickListener(this)
@@ -143,8 +141,6 @@ class SemesterFragment : Fragment() {
         fun bind (course: Course) {
             this.course = course
             courseNameTextView.text = this.course.courseName
-            courseDepartmentTextView.text = this.course.department
-            courseSectionTextView.text = this.course.sectionNumber.toString()
         }
 
         override fun onClick(v: View?) {

@@ -28,8 +28,6 @@
     <string name="class_grade_weight_dash">-</string>
     <string name="class_grade_weight_percent">%</string>
     <string name="add_class_course_name_hint">Enter the name of the course.</string>
-    <string name="add_class_department_name_hint">Enter the name of department. (EX. CECS)</string>
-    <string name="add_class_section_number_hint">Enter the section number of the class.</string>
     <string name="add_class_breakdown_item_hint">Enter the item.</string>
     <string name="add_class_breakdown_weight_hint">Enter the weight.</string>
     <string name="add_class_breakdown_item_button">ADD</string>

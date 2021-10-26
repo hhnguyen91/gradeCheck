@@ -25,12 +25,24 @@ class AddCourseFragment : Fragment() {
     // Add Class Button
     private lateinit var addCourseButton : Button
     private lateinit var courseName : EditText
-    private lateinit var departmentName : EditText
-    private lateinit var sectionNumber : EditText
     // Grade Break Down
-    private lateinit var breakdown : EditText
-    private lateinit var weight : EditText
-    private lateinit var addBreakDown : Button
+    private lateinit var breakdownOne : EditText
+    private lateinit var weightOne : EditText
+
+    private lateinit var breakdownTwo : EditText
+    private lateinit var weightTwo : EditText
+
+    private lateinit var breakdownThree : EditText
+    private lateinit var weightThree : EditText
+
+    private lateinit var breakdownFour : EditText
+    private lateinit var weightFour : EditText
+
+    private lateinit var breakdownFive : EditText
+    private lateinit var weightFive : EditText
+
+    private lateinit var breakdownSix : EditText
+    private lateinit var weightSix : EditText
     // Grades
     // A
     private lateinit var maxA : EditText
@@ -68,12 +80,24 @@ class AddCourseFragment : Fragment() {
 
         addCourseButton = view.findViewById(R.id.add_class_button)
         courseName = view.findViewById(R.id.add_class_course_name)
-        departmentName = view.findViewById(R.id.add_class_department_name)
-        sectionNumber = view.findViewById(R.id.add_class_section_number)
 
-        breakdown = view.findViewById(R.id.add_class_breakdown_item)
-        weight = view.findViewById(R.id.add_class_breakdown_weight)
-        addBreakDown = view.findViewById(R.id.add_class_breakdown_item_button)
+        breakdownOne = view.findViewById(R.id.add_class_breakdown_item_1)
+        weightOne = view.findViewById(R.id.add_class_breakdown_weight_1)
+
+        breakdownTwo = view.findViewById(R.id.add_class_breakdown_item_2)
+        weightTwo = view.findViewById(R.id.add_class_breakdown_weight_2)
+
+        breakdownThree = view.findViewById(R.id.add_class_breakdown_item_3)
+        weightThree = view.findViewById(R.id.add_class_breakdown_weight_3)
+
+        breakdownFour = view.findViewById(R.id.add_class_breakdown_item_4)
+        weightFour = view.findViewById(R.id.add_class_breakdown_weight_4)
+
+        breakdownFive = view.findViewById(R.id.add_class_breakdown_item_5)
+        weightFive = view.findViewById(R.id.add_class_breakdown_weight_5)
+
+        breakdownSix = view.findViewById(R.id.add_class_breakdown_item_6)
+        weightSix = view.findViewById(R.id.add_class_breakdown_weight_6)
 
         minA = view.findViewById(R.id.add_class_grade_weight_A_min)
         maxA = view.findViewById(R.id.add_class_grade_weight_A_max)
@@ -91,11 +115,24 @@ class AddCourseFragment : Fragment() {
         maxF = view.findViewById(R.id.add_class_grade_weight_F_max)
 
         courseName.addTextChangedListener(textWatcher)
-        departmentName.addTextChangedListener(textWatcher)
-        sectionNumber.addTextChangedListener(textWatcher)
 
-        breakdown.addTextChangedListener(textWatcher)
-        weight.addTextChangedListener(textWatcher)
+        breakdownOne.addTextChangedListener(textWatcher)
+        weightOne.addTextChangedListener(textWatcher)
+
+        breakdownTwo.addTextChangedListener(textWatcher)
+        weightTwo.addTextChangedListener(textWatcher)
+
+        breakdownThree.addTextChangedListener(textWatcher)
+        weightThree.addTextChangedListener(textWatcher)
+
+        breakdownFour.addTextChangedListener(textWatcher)
+        weightFour.addTextChangedListener(textWatcher)
+
+        breakdownFive.addTextChangedListener(textWatcher)
+        weightFive.addTextChangedListener(textWatcher)
+
+        breakdownSix.addTextChangedListener(textWatcher)
+        weightSix.addTextChangedListener(textWatcher)
 
         minA.addTextChangedListener(textWatcher)
         maxA.addTextChangedListener(textWatcher)
