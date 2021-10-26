@@ -1,10 +1,7 @@
 package com.example.gradecheckhhn.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.gradecheckhhn.Course
 import com.example.gradecheckhhn.Semester
 import java.util.*
@@ -24,6 +21,8 @@ interface SemesterDao{
 
     @Insert
     fun addSemester(semester: Semester)
-    //
+
+    @Delete
+    fun deleteSmester(semester: Semester)
 
 }

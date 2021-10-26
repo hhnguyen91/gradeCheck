@@ -11,4 +11,8 @@ class SemesterListViewModel : ViewModel () {
     fun addSemester(semester: Semester) {
         semesterRepository.addSemester(semester)
     }
+
+    fun deleteSemester(semester: Semester) {
+        semesterRepository.deleteSemester(semester)
+    }
 }

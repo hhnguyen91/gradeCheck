@@ -2,13 +2,16 @@
 
 package com.example.gradecheckhhn
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -38,7 +41,6 @@ class SemesterListFragment : Fragment() {
         fun onSemesterSelected(semesterId: UUID)
         fun onEditSemesterPressed(semesterId: UUID)
         fun onAddSemesterSelected()
-
     }
 
     override fun onAttach(context: Context) {
@@ -131,6 +133,18 @@ class SemesterListFragment : Fragment() {
             editButton.setOnClickListener{
                 callbacks?.onEditSemesterPressed(semester.id)
             }
+            deleteButton.setOnClickListener{
+                deleteSemester(this.semester)
+                //update UI after semester has been deleted
+                semesterListViewModel.semesterListLiveData.observe(
+                    viewLifecycleOwner,
+                    Observer { semesters ->
+                        semesters?.let {
+                            updateUI(semesters)
+                        }
+                    }
+                )
+            }
         }
 
         fun bind(semester: Semester) {
@@ -165,6 +179,27 @@ class SemesterListFragment : Fragment() {
 
         override fun getItemCount() = semesters.size
     }
+
+    private fun deleteSemester(semester: Semester) {
+
+        //Creating a confirmation dialog
+        var builder = AlertDialog.Builder(activity)
+        builder.setTitle("Delete Semester")
+        builder.setMessage("Are you sure you want to delete ${semester.season.uppercase()} ${semester.year}?")
+        builder.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id->
+            semesterListViewModel.deleteSemester(semester)
+            Toast.makeText(context, "${semester.season.uppercase()} ${semester.year} deleted", Toast.LENGTH_SHORT)
+                .show()
+            dialog.cancel()
+        })
+        builder.setNegativeButton("No", DialogInterface.OnClickListener { dialog, id->
+            dialog.cancel()
+        })
+        var alert: AlertDialog = builder.create()
+        alert.show()
+
+    }
+
 
     companion object {
         fun newInstance(): SemesterListFragment {

@@ -38,6 +38,12 @@ class SemesterRepository private constructor(context: Context){
         }
     }
 
+    fun deleteSemester(semester: Semester){
+        executor.execute{
+            semesterDao.deleteSmester(semester)
+        }
+    }
+
     companion object {
         private var INSTANCE: SemesterRepository? = null
 
