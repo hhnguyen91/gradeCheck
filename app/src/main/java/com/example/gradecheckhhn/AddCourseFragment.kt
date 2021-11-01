@@ -164,7 +164,13 @@ class AddCourseFragment : Fragment() {
                                    start: Int,
                                    before: Int,
                                    count: Int) {
-        //Incomplete
+            val courseNameInput = courseName.text.trim()
+
+            if(courseNameInput.isNotEmpty()) {
+                addCourseButton.apply{
+                    isEnabled = true
+                }
+            }
         //Incomplete
         //Incomplete
         }
