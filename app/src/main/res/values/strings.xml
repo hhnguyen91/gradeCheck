@@ -35,4 +35,11 @@
     <string name="edit_Text">Edit</string>
     <string name="update_Text">Update</string>
     <string name="add_item">Add Item</string>
+    <string name="assignment_name">Assignment Name</string>
+    <string name="assignment_grade">F</string>
+    <string name="assignment_breakdown">Breakdown</string>
+    <string name="assignment_points_title">Points:</string>
+    <string name="assignment_points">N/A</string>
+    <string name="assignment_max_points_title">Max Points:</string>
+    <string name="assignment_max_points">N/A</string>
 </resources>

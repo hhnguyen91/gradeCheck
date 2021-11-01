@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/assignmentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assignment_name"/>
+
+    <TextView
+        android:id="@+id/breakdownName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assignment_breakdown"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assignment_points_title"/>
+
+    <TextView
+        android:id="@+id/assignment_points"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assignment_points"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assignment_max_points_title"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assignment_max_points"/>
+
+</LinearLayout>
