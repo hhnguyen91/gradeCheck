@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.gradecheckhhn.Course
 import com.example.gradecheckhhn.Semester
+import com.example.gradecheckhhn.SemesterWithManyCourses
 import java.util.*
 
 @Dao
@@ -25,4 +26,11 @@ interface SemesterDao{
     @Delete
     fun deleteSmester(semester: Semester)
 
+    //
+
+    /*
+    @Transaction //Allow us to execute it in a thread safe manner
+    @Query("Select * FROM semester where id = (:id)")
+    fun getSemesterWithCourses(id:UUID) : List<SemesterWithManyCourses>
+*/
 }

@@ -7,7 +7,7 @@ data class SemesterWithManyCourses(
     @Embedded val semester : Semester,
     @Relation(
         parentColumn = "id",
-        entityColumn = "CourseID"
+        entityColumn = "SemesterID"
     )
 
     val courseLists : List<Course>
