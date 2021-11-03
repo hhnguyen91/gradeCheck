@@ -43,4 +43,11 @@
     <string name="assignment_points">N/A</string>
     <string name="assignment_max_points_title">Max Points:</string>
     <string name="assignment_max_points">N/A</string>
+
+    <string name='CourseBreakdownLabel1'> </string>
+    <string name='CourseBreakdownLabel2'> </string>
+    <string name='CourseBreakdownLabel3'> </string>
+    <string name='CourseBreakdownLabel4'> </string>
+    <string name='CourseBreakdownLabel5'> </string>
+    <string name='CourseBreakdownLabelFinal'>Final</string>
 </resources>

@@ -42,7 +42,7 @@ class AddCourseFragment : Fragment() {
     private lateinit var breakdownFive : EditText
     private lateinit var weightFive : EditText
 
-    private lateinit var breakdownSix : EditText
+    //private lateinit var breakdownSix : EditText
     private lateinit var weightSix : EditText
     // Grades
     // A
@@ -97,7 +97,7 @@ class AddCourseFragment : Fragment() {
         breakdownFive = view.findViewById(R.id.add_class_breakdown_item_5)
         weightFive = view.findViewById(R.id.add_class_breakdown_weight_5)
 
-        breakdownSix = view.findViewById(R.id.add_class_breakdown_item_6)
+        //breakdownSix = view.findViewById(R.id.add_class_breakdown_item_6)
         weightSix = view.findViewById(R.id.add_class_breakdown_weight_6)
 
         minA = view.findViewById(R.id.add_class_grade_weight_A_min)
@@ -132,7 +132,7 @@ class AddCourseFragment : Fragment() {
         breakdownFive.addTextChangedListener(textWatcher)
         weightFive.addTextChangedListener(textWatcher)
 
-        breakdownSix.addTextChangedListener(textWatcher)
+        //breakdownSix.addTextChangedListener(textWatcher)
         weightSix.addTextChangedListener(textWatcher)
 
         minA.addTextChangedListener(textWatcher)

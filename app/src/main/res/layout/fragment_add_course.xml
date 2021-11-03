@@ -171,11 +171,13 @@
                 android:text="@string/class_breakdown_6"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
-            <EditText
+
+            <TextView
                 android:id="@+id/add_class_breakdown_item_6"
                 android:layout_width="160dp"
                 android:layout_height="48dp"
-                android:hint="@string/add_class_breakdown_item_hint" />
+                android:text="@string/Breakdown_Final"
+                android:textAlignment="center"/>
 
             <EditText
                 android:id="@+id/add_class_breakdown_weight_6"
