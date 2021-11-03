@@ -21,6 +21,9 @@ interface CourseDao {
     /*
     @Update
     fun updateCourse(course: Course)
+
+    @Delete
+    fun deleteCourse(course:Course)
     */
 
     @Insert
