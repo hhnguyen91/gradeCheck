@@ -11,13 +11,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProviders
 import java.util.*
 
 class AddCourseFragment : Fragment() {
 
+    private val semesterIdLiveData = MutableLiveData<UUID>()
+
     interface Callbacks {
-         fun onAddCourseButtonClicked(semesterId: UUID)
+         fun onAddCourseButtonClicked(semesterID: UUID)
+
     }
 
     private var callbacks: Callbacks? = null
@@ -187,9 +191,10 @@ class AddCourseFragment : Fragment() {
                     "${course.courseName} \n " +
                     "Added!", Toast.LENGTH_SHORT).show()
             addCourseViewModel.addCourse(course)
-            callbacks?.onAddCourseButtonClicked()
+            callbacks?.onAddCourseButtonClicked(semesterID =  )
         }
-    }
+        }
+
 
     override fun onDetach() {
         super.onDetach()
@@ -198,5 +203,11 @@ class AddCourseFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
+    }
+
+    companion object {
+        fun newInstance(): SemesterListFragment {
+            return SemesterListFragment()
+        }
     }
 }
