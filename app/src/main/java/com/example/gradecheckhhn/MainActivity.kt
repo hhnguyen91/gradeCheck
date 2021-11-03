@@ -85,9 +85,10 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
-    override fun onAddCourseButtonClicked() {
+    //Reponsible for adding the course
+    override fun onAddCourseButtonClicked(semesterId:) {
         Log.d(TAG,"Add Course")
-        val fragment = SemesterFragment()
+        val fragment = SemesterFragment.newInstance(semesterId)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)

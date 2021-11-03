@@ -12,11 +12,12 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import java.util.*
 
 class AddCourseFragment : Fragment() {
 
     interface Callbacks {
-         fun onAddCourseButtonClicked()
+         fun onAddCourseButtonClicked(semesterId: UUID)
     }
 
     private var callbacks: Callbacks? = null
