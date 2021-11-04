@@ -20,7 +20,7 @@ class AddCourseFragment : Fragment() {
     private val semesterIdLiveData = MutableLiveData<UUID>()
 
     interface Callbacks {
-         fun onAddCourseButtonClicked(semesterID: UUID)
+         fun onAddCourseButtonClicked()
 
     }
 
@@ -191,7 +191,7 @@ class AddCourseFragment : Fragment() {
                     "${course.courseName} \n " +
                     "Added!", Toast.LENGTH_SHORT).show()
             addCourseViewModel.addCourse(course)
-            callbacks?.onAddCourseButtonClicked(semesterID =  )
+            callbacks?.onAddCourseButtonClicked()
         }
         }
 

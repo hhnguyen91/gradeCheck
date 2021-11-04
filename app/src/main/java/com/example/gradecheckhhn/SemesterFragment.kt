@@ -77,9 +77,20 @@ class SemesterFragment : Fragment() {
                 semester?.let {
                     this.semester = semester
                     Log.i(TAG,"Semester ${semester.season} ${semester.year} selected")
-                    updateUI()
+                    UpperCaseText()
                 }
+
             }
+        )
+
+        courseListViewModel.courseListLiveData.observe(
+            viewLifecycleOwner,
+            Observer{ courses->
+                courses?.let {
+                updateUI(courses)
+            }
+            }
+
         )
     }
 
@@ -88,9 +99,14 @@ class SemesterFragment : Fragment() {
         inflater.inflate(R.menu.fragment_course_list,menu)
     }
 
-    private fun updateUI() {
+    private fun UpperCaseText() {
         semesterTitle.text = "${semester.season.uppercase()} ${semester.year}"
+    }
 
+    private fun updateUI(courses: List<Course>) {
+        Log.i(TAG,"Got ${courses.size} courses")
+        adapter = CourseAdapter(courses)
+        //courseRecyclerView.adapter = adapter
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -128,6 +144,7 @@ class SemesterFragment : Fragment() {
         callbacks = null
     }
 
+    // Handles the course item functionality
     private inner class CourseHolder (view: View)
         :RecyclerView.ViewHolder(view), View.OnClickListener{
         private lateinit var course: Course
