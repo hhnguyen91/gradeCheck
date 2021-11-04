@@ -3,19 +3,18 @@ package com.example.gradecheckhhn
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.Room
-import com.example.gradecheckhhn.database.SemesterDatabase
+import com.example.gradecheckhhn.database.AppDatabase
 import java.lang.IllegalStateException
 import java.util.*
-import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
 private const val DATABASE_NAME = "semester-database"
 
 class SemesterRepository private constructor(context: Context){
 
-    private val database : SemesterDatabase = Room.databaseBuilder(
+    private val database : AppDatabase = Room.databaseBuilder(
         context.applicationContext,
-        SemesterDatabase::class.java,
+        AppDatabase::class.java,
         DATABASE_NAME
     ).build()
 
