@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import com.example.gradecheckhhn.databaseEntities.Course
 import java.util.*
 
 private const val TAG = "CourseFragment"

@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Update
-import com.example.gradecheckhhn.Course
+import androidx.room.Transaction
+import com.example.gradecheckhhn.databaseEntities.Course
+import com.example.gradecheckhhn.databaseEntities.relationship.SemesterWithManyCourses
 import java.util.*
 
 @Dao
@@ -28,6 +29,4 @@ interface CourseDao {
 
     @Insert
     fun addCourse(course: Course)
-
-
 }

@@ -5,13 +5,14 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gradecheckhhn.databaseEntities.Course
+import com.example.gradecheckhhn.databaseEntities.Semester
 import java.util.*
 
 private const val TAG = "SemesterFragment"

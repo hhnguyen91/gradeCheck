@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.Room
 import com.example.gradecheckhhn.database.AppDatabase
+import com.example.gradecheckhhn.databaseEntities.Semester
 import java.lang.IllegalStateException
 import java.util.*
 import java.util.concurrent.Executors
@@ -39,7 +40,7 @@ class SemesterRepository private constructor(context: Context){
 
     fun deleteSemester(semester: Semester){
         executor.execute{
-            semesterDao.deleteSmester(semester)
+            semesterDao.deleteSemester(semester)
         }
     }
 

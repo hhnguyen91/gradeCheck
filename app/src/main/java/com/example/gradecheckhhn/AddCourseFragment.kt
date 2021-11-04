@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProviders
+import com.example.gradecheckhhn.databaseEntities.Course
 import java.util.*
 
 class AddCourseFragment : Fragment() {

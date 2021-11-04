@@ -3,8 +3,8 @@ package com.example.gradecheckhhn.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.gradecheckhhn.Course
-import com.example.gradecheckhhn.Semester
+import com.example.gradecheckhhn.databaseEntities.Course
+import com.example.gradecheckhhn.databaseEntities.Semester
 
 private const val DATABASE_NAME = "semester-database"
 
