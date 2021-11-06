@@ -29,6 +29,9 @@ class CourseRepository private constructor(context: Context) {
             courseDao.addCourse(course)
         }
     }
+    fun deleteCourse(course: Course){
+
+    }
 
     companion object {
         private var INSTANCE: CourseRepository? = null

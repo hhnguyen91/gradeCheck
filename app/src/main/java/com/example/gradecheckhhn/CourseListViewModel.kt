@@ -11,5 +11,9 @@ class CourseListViewModel : ViewModel() {
     fun addCourse(course :Course) {
         Log.d("MainActivity","Hello")
         // Incomplete missing repo.add()
+        courseRepository.addCourse(course)
+    }
+    fun deleteCourse(course: Course){
+        courseRepository.deleteCourse(course)
     }
 }
