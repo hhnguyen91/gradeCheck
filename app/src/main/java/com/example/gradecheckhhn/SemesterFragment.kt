@@ -2,10 +2,13 @@
 package com.example.gradecheckhhn
 
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.Observer
@@ -181,6 +184,28 @@ class SemesterFragment : Fragment() {
         }
 
         override fun getItemCount() = courseList.size
+    }
+
+    /* delete course */
+    private fun deleteCourse(course: Course) {
+
+         //Creating a confirmation dialog
+         var builder = AlertDialog.Builder(activity)
+         builder.setTitle("Delete Course")
+         builder.setMessage("Are you sure you want to delete ${course.courseName.uppercase()}?")
+         builder.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id->
+             courseListViewModel.deleteCourse(course)
+
+             Toast.makeText(context, "${course.courseName.uppercase()} deleted", Toast.LENGTH_SHORT)
+                 .show()
+             dialog.cancel()
+         })
+         builder.setNegativeButton("No", DialogInterface.OnClickListener { dialog, id->
+             dialog.cancel()
+         })
+         var alert: AlertDialog = builder.create()
+         alert.show()
+
     }
 
 
