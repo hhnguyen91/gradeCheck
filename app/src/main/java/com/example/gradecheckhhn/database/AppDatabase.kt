@@ -14,5 +14,5 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun semesterDao(): SemesterDao
     abstract fun courseDao() : CourseDao
-
+    abstract fun assignmentDao() : AssignmentDao
 }

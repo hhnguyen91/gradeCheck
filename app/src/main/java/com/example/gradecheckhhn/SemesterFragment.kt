@@ -207,7 +207,4 @@ class SemesterFragment : Fragment() {
          alert.show()
 
     }
-
-
-
 }

@@ -6,7 +6,7 @@ import java.util.*
 
 @Entity
 data class Assignment(@PrimaryKey val AssignmentID : UUID = UUID.randomUUID(),
-                      var AssignmentName:String = "",
+                      var assignmentName:String = "",
                       var breakdownName:String = "",
                       var currentPoints: Double = 0.0,
-                      var MaximumPoints: Double = 0.0)
+                      var maximumPoints: Double = 0.0)
