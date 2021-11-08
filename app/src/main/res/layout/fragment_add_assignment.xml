@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp">
 
+    <EditText
+        android:id="@+id/add_assignment_name"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/add_assignment_name_hint" />
+
 </LinearLayout>
