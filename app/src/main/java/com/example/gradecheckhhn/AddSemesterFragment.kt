@@ -1,6 +1,5 @@
 package com.example.gradecheckhhn
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
@@ -13,7 +12,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import javax.security.auth.callback.Callback
+import com.example.gradecheckhhn.databaseEntities.Semester
 
 class AddSemesterFragment : Fragment() {
 

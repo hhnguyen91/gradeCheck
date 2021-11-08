@@ -2,16 +2,20 @@
 package com.example.gradecheckhhn
 
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gradecheckhhn.databaseEntities.Course
+import com.example.gradecheckhhn.databaseEntities.Semester
 import java.util.*
 
 private const val TAG = "SemesterFragment"
@@ -77,9 +81,20 @@ class SemesterFragment : Fragment() {
                 semester?.let {
                     this.semester = semester
                     Log.i(TAG,"Semester ${semester.season} ${semester.year} selected")
-                    updateUI()
+                    UpperCaseText()
                 }
+
             }
+        )
+
+        courseListViewModel.courseListLiveData.observe(
+            viewLifecycleOwner,
+            Observer{ courses->
+                courses?.let {
+                updateUI(courses)
+            }
+            }
+
         )
     }
 
@@ -88,9 +103,14 @@ class SemesterFragment : Fragment() {
         inflater.inflate(R.menu.fragment_course_list,menu)
     }
 
-    private fun updateUI() {
+    private fun UpperCaseText() {
         semesterTitle.text = "${semester.season.uppercase()} ${semester.year}"
+    }
 
+    private fun updateUI(courses: List<Course>) {
+        Log.i(TAG,"Got ${courses.size} courses")
+        adapter = CourseAdapter(courses)
+        //courseRecyclerView.adapter = adapter
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -128,6 +148,7 @@ class SemesterFragment : Fragment() {
         callbacks = null
     }
 
+    // Handles the course item functionality
     private inner class CourseHolder (view: View)
         :RecyclerView.ViewHolder(view), View.OnClickListener{
         private lateinit var course: Course
@@ -163,6 +184,28 @@ class SemesterFragment : Fragment() {
         }
 
         override fun getItemCount() = courseList.size
+    }
+
+    /* delete course */
+    private fun deleteCourse(course: Course) {
+
+         //Creating a confirmation dialog
+         var builder = AlertDialog.Builder(activity)
+         builder.setTitle("Delete Course")
+         builder.setMessage("Are you sure you want to delete ${course.courseName.uppercase()}?")
+         builder.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id->
+             courseListViewModel.deleteCourse(course)
+
+             Toast.makeText(context, "${course.courseName.uppercase()} deleted", Toast.LENGTH_SHORT)
+                 .show()
+             dialog.cancel()
+         })
+         builder.setNegativeButton("No", DialogInterface.OnClickListener { dialog, id->
+             dialog.cancel()
+         })
+         var alert: AlertDialog = builder.create()
+         alert.show()
+
     }
 
 

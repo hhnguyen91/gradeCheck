@@ -1,4 +1,4 @@
-package com.example.gradecheckhhn
+package com.example.gradecheckhhn.databaseEntities
 
 import androidx.room.Entity
 import androidx.room.ForeignKey

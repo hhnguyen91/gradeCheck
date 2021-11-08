@@ -1,6 +1,7 @@
 package com.example.gradecheckhhn
 
 import androidx.lifecycle.ViewModel
+import com.example.gradecheckhhn.databaseEntities.Course
 
 class AddCourseViewModel : ViewModel() {
 

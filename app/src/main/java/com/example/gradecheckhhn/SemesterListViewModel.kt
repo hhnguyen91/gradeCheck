@@ -1,7 +1,7 @@
 package com.example.gradecheckhhn
 
 import androidx.lifecycle.ViewModel
-import java.util.*
+import com.example.gradecheckhhn.databaseEntities.Semester
 
 class SemesterListViewModel : ViewModel () {
 

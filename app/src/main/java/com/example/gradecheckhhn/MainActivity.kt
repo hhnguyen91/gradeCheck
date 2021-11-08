@@ -11,6 +11,8 @@ class MainActivity : AppCompatActivity(),
     SemesterListFragment.Callbacks, AddSemesterFragment.Callbacks
     ,SemesterFragment.Callbacks, AddCourseFragment.Callbacks, SemesterEditFragment.Callbacks{
 
+    lateinit var currentSemesterID : UUID
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onSemesterSelected(semesterId: UUID) {
         Log.d(TAG, "MainActivity.onCrimeSelected: $semesterId")
+        currentSemesterID = semesterId
         val fragment = SemesterFragment.newInstance(semesterId)
         supportFragmentManager
             .beginTransaction()
@@ -86,9 +89,9 @@ class MainActivity : AppCompatActivity(),
     }
 
     //Reponsible for adding the course
-    override fun onAddCourseButtonClicked(semesterID:UUID) {
+    override fun onAddCourseButtonClicked() {
         Log.d(TAG,"Add Course")
-        val fragment = SemesterFragment.newInstance(semesterID)
+        val fragment = SemesterFragment.newInstance(currentSemesterID)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
