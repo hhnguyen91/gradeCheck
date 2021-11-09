@@ -5,14 +5,14 @@ import com.example.gradecheckhhn.databaseEntities.Assignment
 
 class AssignmentListViewModel : ViewModel() {
 
-    private val assignmentRepository = AssignmentRepository.get()
-    val assignmentListLiveData = assignmentRepository.getAssignments()
+    private val gradeCheckRepository = GradeCheckRepository.get()
+    val assignmentListLiveData = gradeCheckRepository.getAssignments()
 /*
     fun addAssignment(assignment: Assignment) {
         assignmentRepository.addAssignment(assignment)
     }
 */
     fun deleteAssignment(assignment: Assignment) {
-        assignmentRepository.deleteAssignment(assignment)
+        gradeCheckRepository.deleteAssignment(assignment)
     }
 }

@@ -5,9 +5,9 @@ import com.example.gradecheckhhn.databaseEntities.Course
 
 class AddCourseViewModel : ViewModel() {
 
-    private val courseRepository = CourseRepository.get()
+    private val gradeCheckRepository = GradeCheckRepository.get()
 
     fun addCourse(course : Course) {
-        courseRepository.addCourse(course)
+        gradeCheckRepository.addCourse(course)
     }
 }

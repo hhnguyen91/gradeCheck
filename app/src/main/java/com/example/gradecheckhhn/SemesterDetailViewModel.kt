@@ -9,12 +9,12 @@ import java.util.*
 
 class SemesterDetailViewModel() : ViewModel() {
 
-    private val semesterRepository = SemesterRepository.get()
+    private val gradeCheckRepository = GradeCheckRepository.get()
     private val semesterIdLiveData = MutableLiveData<UUID>()
 
     var semesterLiveData: LiveData<Semester?> =
         Transformations.switchMap(semesterIdLiveData) { semesterId ->
-            semesterRepository.getSemester(semesterId)
+            gradeCheckRepository.getSemester(semesterId)
         }
 
     fun loadSemester(semesterId: UUID) {
@@ -22,7 +22,7 @@ class SemesterDetailViewModel() : ViewModel() {
     }
 
     fun saveSemester(semester: Semester) {
-        semesterRepository.updateSemester(semester)
+        gradeCheckRepository.updateSemester(semester)
     }
 
 }

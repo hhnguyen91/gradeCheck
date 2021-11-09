@@ -14,7 +14,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProviders
 import com.example.gradecheckhhn.databaseEntities.Course
+import com.example.gradecheckhhn.databaseEntities.Semester
 import java.util.*
+
+private const val ARG_SEMESTER_ID = "semester_id"
 
 class AddCourseFragment : Fragment() {
 
@@ -82,10 +85,12 @@ class AddCourseFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_add_course,container,false)
 
+        val semesterId: UUID = arguments?.getSerializable(ARG_SEMESTER_ID) as UUID
+
         course = Course()
 
         addCourseButton = view.findViewById(R.id.add_class_button)
-        courseName = view.findViewById(R.id.add_class_course_name)
+        courseName = view.findViewById(R.id.add_class_course_name) as EditText
 
         breakdownOne = view.findViewById(R.id.add_class_breakdown_item_1)
         weightOne = view.findViewById(R.id.add_class_breakdown_weight_1)
@@ -158,6 +163,12 @@ class AddCourseFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val semesterId = arguments?.getSerializable(ARG_SEMESTER_ID) as UUID
+        course.SemesterID = semesterId.toString()
+    }
+
     private val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?,
                                        start: Int,
@@ -170,15 +181,80 @@ class AddCourseFragment : Fragment() {
                                    start: Int,
                                    before: Int,
                                    count: Int) {
+
+            //Getting all the input from the user
             val courseNameInput = courseName.text.trim()
 
+            val breakdownOneInput = breakdownOne.text.trim()
+            val weightOneInput = weightOne.text.trim()
+
+            val breakdownTwoInput = breakdownTwo.text.trim()
+            val weightTwoInput = weightTwo.text.trim()
+
+            val breakdownThreeInput = breakdownThree.text.trim()
+            val weightThreeInput = weightThree.text.trim()
+
+            val breakdownFourInput = breakdownFour.text.trim()
+            val weightFourInput = weightFour.text.trim()
+
+            val breakdownFiveInput = breakdownFive.text.trim()
+            val weightFiveInput = weightFive.text.trim()
+
+            val weightSixInput = weightSix.text.trim()
+
+            //Testing if the input field is blank, if not, assigning the value to the course
             if(courseNameInput.isNotEmpty()) {
                 addCourseButton.apply{
                     isEnabled = true
                 }
+                course.courseName = courseNameInput.toString()
             }
-        //Incomplete
-        //Incomplete
+
+            //Break down 1
+            if(breakdownOneInput.isNotEmpty()) {
+                course.breakdown1Name = breakdownOneInput.toString()
+            }
+            if(weightOneInput.isNotEmpty() && weightOneInput.toString().toDoubleOrNull() != null) {
+                course.breakdown1Weight = weightOneInput.toString().toDouble()
+            }
+
+            //Break down 2
+            if(breakdownTwoInput.isNotEmpty()) {
+                course.breakdown2Name = breakdownTwoInput.toString()
+            }
+            if(weightTwoInput.isNotEmpty() && weightTwoInput.toString().toDoubleOrNull() != null) {
+                course.breakdown2Weight = weightTwoInput.toString().toDouble()
+            }
+
+            //Break down 3
+            if(breakdownThreeInput.isNotEmpty()) {
+                course.breakdown3Name = breakdownThreeInput.toString()
+            }
+            if(weightThreeInput.isNotEmpty() && weightThreeInput.toString().toDoubleOrNull() != null) {
+                course.breakdown3Weight = weightThreeInput.toString().toDouble()
+            }
+
+            //Break down 4
+            if(breakdownFourInput.isNotEmpty()) {
+                course.breakdown4Name = breakdownFourInput.toString()
+            }
+            if(weightTwoInput.isNotEmpty() && weightFourInput.toString().toDoubleOrNull() != null) {
+                course.breakdown4Weight = weightFourInput.toString().toDouble()
+            }
+
+            //Break down 5
+            if(breakdownFiveInput.isNotEmpty()) {
+                course.breakdown5Name = breakdownFiveInput.toString()
+            }
+            if(weightFiveInput.isNotEmpty() && weightFiveInput.toString().toDoubleOrNull() != null) {
+                course.breakdown5Weight = weightFiveInput.toString().toDouble()
+            }
+
+            //Break down 6
+            if(weightSixInput.isNotEmpty() && weightSixInput.toString().toDoubleOrNull() != null) {
+                course.breakdown6Weight = weightSixInput.toString().toDouble()
+            }
+
         }
 
         override fun afterTextChanged(s: Editable?) {
@@ -186,8 +262,8 @@ class AddCourseFragment : Fragment() {
     }
     override fun onStart(){
         super.onStart()
-
         addCourseButton.setOnClickListener{
+
             Toast.makeText(context,"" +
                     "${course.courseName} \n " +
                     "Added!", Toast.LENGTH_SHORT).show()
@@ -207,8 +283,13 @@ class AddCourseFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(): SemesterListFragment {
-            return SemesterListFragment()
+        fun newInstance(semesterId: UUID) : AddCourseFragment{
+            val args = Bundle().apply {
+                putSerializable(ARG_SEMESTER_ID, semesterId)
+            }
+            return AddCourseFragment().apply {
+                arguments = args
+            }
         }
     }
 }

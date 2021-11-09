@@ -13,8 +13,8 @@ import java.util.*
 interface CourseDao {
 
 
-    @Query("SELECT * FROM course")
-    fun getCourses(): LiveData<List<Course>>
+    @Query("SELECT * FROM semester WHERE id =(:id)")
+    fun getCourses(id: UUID): LiveData<List<SemesterWithManyCourses>>
 
     @Query("SELECT * FROM course WHERE CourseID=(:id)")
     fun getCourse(id: UUID): LiveData<Course?>

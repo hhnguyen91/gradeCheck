@@ -5,14 +5,14 @@ import com.example.gradecheckhhn.databaseEntities.Semester
 
 class SemesterListViewModel : ViewModel () {
 
-    private val semesterRepository = SemesterRepository.get()
-    val semesterListLiveData = semesterRepository.getSemesters()
+    private val gradeCheckRepository = GradeCheckRepository.get()
+    val semesterListLiveData = gradeCheckRepository.getSemesters()
 
     fun addSemester(semester: Semester) {
-        semesterRepository.addSemester(semester)
+        gradeCheckRepository.addSemester(semester)
     }
 
     fun deleteSemester(semester: Semester) {
-        semesterRepository.deleteSemester(semester)
+        gradeCheckRepository.deleteSemester(semester)
     }
 }

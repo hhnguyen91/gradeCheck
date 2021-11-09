@@ -5,9 +5,9 @@ import com.example.gradecheckhhn.databaseEntities.Semester
 
 class SemesterEditViewModel : ViewModel() {
 
-    private val semesterRepository = SemesterRepository.get()
+    private val gradeCheckRepository = GradeCheckRepository.get()
 
     fun updateSemester(semester: Semester){
-        semesterRepository.updateSemester(semester)
+        gradeCheckRepository.updateSemester(semester)
     }
 }

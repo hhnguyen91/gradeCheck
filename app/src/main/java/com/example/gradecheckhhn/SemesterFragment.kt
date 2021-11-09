@@ -10,12 +10,15 @@ import android.widget.TextView
 import android.widget.Toast
 import android.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gradecheckhhn.databaseEntities.Course
 import com.example.gradecheckhhn.databaseEntities.Semester
+import com.example.gradecheckhhn.databaseEntities.relationship.SemesterWithManyCourses
 import java.util.*
 
 private const val TAG = "SemesterFragment"
@@ -35,15 +38,15 @@ class SemesterFragment : Fragment() {
         ViewModelProviders.of(this).get(SemesterDetailViewModel::class.java)
     }
 
-    private val courseListViewModel : CourseListViewModel by lazy {
-        ViewModelProviders.of(this).get(CourseListViewModel::class.java)
-    }
+    private lateinit var courseListViewModel : CourseListViewModel
+    private lateinit var courseListViewModelFactory: CourseListViewModelFactory
+
 
 
     interface Callbacks {
         fun onCourseSelected(courseId: UUID)
         //Should Direct user to create course Screen
-        fun onAddCourseSelected()
+        fun onAddCourseSelected(semesterId: UUID)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +55,8 @@ class SemesterFragment : Fragment() {
         val semesterId: UUID = arguments?.getSerializable(ARG_SEMESTER_ID) as UUID
         Log.i(TAG,"Semester $semesterId selected")
         semesterDetailViewModel.loadSemester(semesterId)
+        courseListViewModelFactory = CourseListViewModelFactory(semesterId)
+        courseListViewModel = ViewModelProvider(this, courseListViewModelFactory).get(CourseListViewModel::class.java)
         // Must be true for the app bar change to happen
         setHasOptionsMenu(true)
     }
@@ -67,6 +72,11 @@ class SemesterFragment : Fragment() {
         courseRecyclerView = view.findViewById(R.id.course_recycler_view) as RecyclerView
         courseRecyclerView.layoutManager = LinearLayoutManager(context)
         courseRecyclerView.adapter = adapter
+
+        val semesterId = arguments?.getSerializable(ARG_SEMESTER_ID) as UUID
+
+
+
 
         return view
     }
@@ -87,16 +97,21 @@ class SemesterFragment : Fragment() {
             }
         )
 
+    }
+
+    override fun onStart() {
+        super.onStart()
         courseListViewModel.courseListLiveData.observe(
             viewLifecycleOwner,
             Observer{ courses->
                 courses?.let {
-                updateUI(courses)
-            }
+                    updateUI(courses)
+                }
             }
 
         )
     }
+
 
     // Change the menu from adding semester to course
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -107,10 +122,10 @@ class SemesterFragment : Fragment() {
         semesterTitle.text = "${semester.season.uppercase()} ${semester.year}"
     }
 
-    private fun updateUI(courses: List<Course>) {
-        Log.i(TAG,"Got ${courses.size} courses")
-        adapter = CourseAdapter(courses)
-        //courseRecyclerView.adapter = adapter
+    private fun updateUI(courses: List<SemesterWithManyCourses>) {
+        Log.i(TAG,"Got ${courses[0].courseLists.size} courses 13213")
+        adapter = CourseAdapter(courses[0].courseLists)
+        courseRecyclerView.adapter = adapter
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -121,12 +136,13 @@ class SemesterFragment : Fragment() {
                 //courseListViewModel.addCourse(course)
                 //callbacks?.onCourseSelected(course.CourseID)
                 Log.d(TAG,"Directing user to create course form")
-                callbacks?.onAddCourseSelected()
+                callbacks?.onAddCourseSelected(semester.id)
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
+
     companion object {
         fun newInstance(semesterId: UUID): SemesterFragment {
             val args = Bundle().apply {
@@ -153,7 +169,7 @@ class SemesterFragment : Fragment() {
         :RecyclerView.ViewHolder(view), View.OnClickListener{
         private lateinit var course: Course
 
-        private val courseNameTextView: TextView = itemView.findViewById(R.id.class_title)
+        private val courseNameTextView: TextView = itemView.findViewById(R.id.course_view_title)
 
         init {
             itemView.setOnClickListener(this)
@@ -162,6 +178,7 @@ class SemesterFragment : Fragment() {
         fun bind (course: Course) {
             this.course = course
             courseNameTextView.text = this.course.courseName
+
         }
 
         override fun onClick(v: View?) {
@@ -174,12 +191,13 @@ class SemesterFragment : Fragment() {
         :RecyclerView.Adapter<CourseHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourseHolder {
-            val view = layoutInflater.inflate(R.layout.list_item_course,parent)
+            val view = layoutInflater.inflate(R.layout.list_item_course,parent,false)
             return CourseHolder(view)
         }
 
         override fun onBindViewHolder(holder: CourseHolder, position: Int) {
             val course = courseList[position]
+            Log.i(TAG,"Course ${course.courseName}")
             holder.bind(course)
         }
 

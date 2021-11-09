@@ -7,29 +7,29 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/assignment_view_title"
+        android:id="@+id/course_view_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Assignment Title"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/edit_assignment_Button"
+        app:layout_constraintEnd_toStartOf="@+id/edit_course_Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
-        android:id="@+id/edit_assignment_Button"
+        android:id="@+id/edit_course_Button"
         android:layout_width="55dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         app:icon="@drawable/ic_baseline_edit_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/delete_assignment_Button"
+        app:layout_constraintEnd_toStartOf="@+id/delete_course_Button"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/delete_assignment_Button"
+        android:id="@+id/delete_course_Button"
         android:layout_width="55dp"
         android:layout_height="wrap_content"
         app:icon="@drawable/ic_deletebtn"

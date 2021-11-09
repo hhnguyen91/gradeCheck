@@ -2,19 +2,22 @@ package com.example.gradecheckhhn
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.gradecheckhhn.databaseEntities.Course
+import java.util.*
 
-class CourseListViewModel : ViewModel() {
+class CourseListViewModel (private val semesterID:UUID): ViewModel() {
 
-    private val courseRepository = CourseRepository.get()
-    val courseListLiveData = courseRepository.getCourses()
+    private val gradeCheckRepository = GradeCheckRepository.get()
+    val courseListLiveData = gradeCheckRepository.getCourses(semesterID)
 
     fun addCourse(course : Course) {
         Log.d("MainActivity","Hello")
         // Incomplete missing repo.add()
-        courseRepository.addCourse(course)
+        gradeCheckRepository.addCourse(course)
     }
     fun deleteCourse(course: Course){
-        courseRepository.deleteCourse(course)
+        gradeCheckRepository.deleteCourse(course)
     }
+
 }

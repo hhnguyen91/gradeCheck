@@ -79,8 +79,8 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
-    override fun onAddCourseSelected() {
-        val fragment = AddCourseFragment()
+    override fun onAddCourseSelected(semesterId: UUID) {
+        val fragment = AddCourseFragment.newInstance(semesterId)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container,fragment)

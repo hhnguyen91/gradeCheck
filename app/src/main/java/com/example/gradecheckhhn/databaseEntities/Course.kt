@@ -7,7 +7,7 @@ import java.util.*
 
 @Entity
 data class Course (@PrimaryKey val CourseID: UUID = UUID.randomUUID(),
-                   //val SemesterID: UUID,
+                   var SemesterID: String = "",
                    var courseName: String = "",
 // List of Breakdown Var go here 6 Breakdown
                    var breakdown1Name : String = "",
