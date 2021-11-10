@@ -10,7 +10,7 @@ private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity(),
     SemesterListFragment.Callbacks, AddSemesterFragment.Callbacks
     ,SemesterFragment.Callbacks, AddCourseFragment.Callbacks,
-    SemesterEditFragment.Callbacks {
+    SemesterEditFragment.Callbacks,CourseEditFragment.Callbacks {
 
     lateinit var currentSemesterID : UUID
 
@@ -70,6 +70,15 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
+    override fun onUpdateSemesterSelected() {
+        val fragment = SemesterListFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
     override fun onCourseSelected(courseId: UUID) {
         Log.d(TAG,"MainActivity.onClassSelected: $courseId")
         val fragment = CourseFragment.newInstance(courseId)
@@ -89,7 +98,25 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
-    //Reponsible for adding the course
+    override fun onEditCoursePressed(courseId: UUID,semesterId: UUID) {
+        val fragment = CourseEditFragment.newInstance(courseId, semesterId)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun onUpdateCourseSelected(semesterId: UUID) {
+        val fragment = SemesterFragment.newInstance(semesterId)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    //Responsible for adding the course
     override fun onAddCourseButtonClicked() {
         Log.d(TAG,"Add Course")
         val fragment = SemesterFragment.newInstance(currentSemesterID)
@@ -100,13 +127,6 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
-    override fun onUpdateSemesterSelected() {
-        val fragment = SemesterListFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
-            .commit()
-    }
+
 
 }

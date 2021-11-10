@@ -12,9 +12,9 @@
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_assignment.xml" value="0.23020833333333332" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_class.xml" value="0.3416666666666667" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_class_list.xml" value="0.1" />
-        <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_course.xml" value="0.1" />
+        <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_course.xml" value="0.18489583333333334" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_item_list.xml" value="0.1762917933130699" />
-        <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_semester.xml" value="0.18072289156626506" />
+        <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_semester.xml" value="0.25" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_semester_list.xml" value="0.25" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/list_item_assignment.xml" value="0.23020833333333332" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/list_item_class.xml" value="0.11911231884057971" />
@@ -43,9 +43,12 @@
         <entry key="..\:/Users/hhngu/AndroidStudioProjects/gradeCheckHHN/app/src/main/res/drawable/ic_deletebtn.xml" value="0.3445" />
         <entry key="..\:/Users/hhngu/AndroidStudioProjects/gradeCheckHHN/app/src/main/res/drawable/ic_launcher_background.xml" value="0.165" />
         <entry key="..\:/Users/hhngu/AndroidStudioProjects/gradeCheckHHN/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/hhngu/AndroidStudioProjects/gradeCheckHHN/app/src/main/res/layout/fragment_add_assignment.xml" value="0.16033434650455927" />
         <entry key="..\:/Users/hhngu/AndroidStudioProjects/gradeCheckHHN/app/src/main/res/layout/fragment_add_course.xml" value="0.3572916666666667" />
         <entry key="..\:/Users/hhngu/AndroidStudioProjects/gradeCheckHHN/app/src/main/res/layout/fragment_add_semester.xml" value="0.4777777777777778" />
+        <entry key="..\:/Users/hhngu/AndroidStudioProjects/gradeCheckHHN/app/src/main/res/layout/fragment_assignment.xml" value="0.16033434650455927" />
         <entry key="..\:/Users/hhngu/AndroidStudioProjects/gradeCheckHHN/app/src/main/res/layout/fragment_course.xml" value="0.3572916666666667" />
+        <entry key="..\:/Users/hhngu/AndroidStudioProjects/gradeCheckHHN/app/src/main/res/layout/fragment_edit_course.xml" value="0.5" />
         <entry key="..\:/Users/hhngu/AndroidStudioProjects/gradeCheckHHN/app/src/main/res/layout/fragment_semester.xml" value="0.33" />
         <entry key="..\:/Users/hhngu/AndroidStudioProjects/gradeCheckHHN/app/src/main/res/layout/fragment_semester_edit.xml" value="0.17502532928064843" />
         <entry key="..\:/Users/hhngu/AndroidStudioProjects/gradeCheckHHN/app/src/main/res/layout/fragment_semester_list.xml" value="0.5" />

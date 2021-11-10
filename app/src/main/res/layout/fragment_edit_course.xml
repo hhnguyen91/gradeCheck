@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/class_course_name"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/add_class_course_name"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/add_class_course_name_hint" />
+
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/class_breakdown"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <!-- Breakdown 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_breakdown_1"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/add_class_breakdown_item_1"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:hint="@string/add_class_breakdown_item_hint" />
+
+            <EditText
+                android:id="@+id/add_class_breakdown_weight_1"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:inputType="numberDecimal"
+                android:hint="@string/add_class_breakdown_weight_hint" />
+        </LinearLayout>
+        <!-- Breakdown 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_breakdown_2"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/add_class_breakdown_item_2"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:hint="@string/add_class_breakdown_item_hint" />
+
+            <EditText
+                android:id="@+id/add_class_breakdown_weight_2"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:inputType="numberDecimal"
+                android:hint="@string/add_class_breakdown_weight_hint" />
+        </LinearLayout>
+        <!-- Breakdown 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_breakdown_3"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/add_class_breakdown_item_3"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:hint="@string/add_class_breakdown_item_hint" />
+
+            <EditText
+                android:id="@+id/add_class_breakdown_weight_3"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:inputType="numberDecimal"
+                android:hint="@string/add_class_breakdown_weight_hint" />
+        </LinearLayout>
+        <!-- Breakdown 4 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_breakdown_4"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/add_class_breakdown_item_4"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:hint="@string/add_class_breakdown_item_hint" />
+
+            <EditText
+                android:id="@+id/add_class_breakdown_weight_4"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:inputType="numberDecimal"
+                android:hint="@string/add_class_breakdown_weight_hint" />
+        </LinearLayout>
+        <!-- Breakdown 5 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_breakdown_5"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/add_class_breakdown_item_5"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:hint="@string/add_class_breakdown_item_hint" />
+
+            <EditText
+                android:id="@+id/add_class_breakdown_weight_5"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:inputType="numberDecimal"
+                android:hint="@string/add_class_breakdown_weight_hint" />
+        </LinearLayout>
+        <!-- Breakdown 6 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_breakdown_6"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/add_class_breakdown_item_6"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:text="@string/Breakdown_Final"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/add_class_breakdown_weight_6"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:inputType="numberDecimal"
+                android:hint="@string/add_class_breakdown_weight_hint" />
+        </LinearLayout>
+
+        <!-- Grade Weight Title -->
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/class_grade_weight"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <!-- A -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_A"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/add_class_grade_weight_A_max"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="100.0"
+                android:gravity="center" />
+
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_dash"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:gravity="center" />
+
+            <EditText
+                android:id="@+id/add_class_grade_weight_A_min"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="90.0"
+                android:gravity="center" />
+
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_percent"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- B -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_B"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/add_class_grade_weight_B_max"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="89.9"
+                android:gravity="center" />
+
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_dash"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:gravity="center" />
+
+            <EditText
+                android:id="@+id/add_class_grade_weight_B_min"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="80.0"
+                android:gravity="center" />
+
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_percent"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- C -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_C"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/add_class_grade_weight_C_max"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="79.9"
+                android:gravity="center" />
+
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_dash"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:gravity="center" />
+
+            <EditText
+                android:id="@+id/add_class_grade_weight_C_min"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="70.0"
+                android:gravity="center" />
+
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_percent"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- D -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_D"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/add_class_grade_weight_D_max"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="69.9"
+                android:gravity="center" />
+
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_dash"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:gravity="center" />
+
+            <EditText
+                android:id="@+id/add_class_grade_weight_D_min"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="60.0"
+                android:gravity="center" />
+
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_percent"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- F -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_F"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/add_class_grade_weight_F_max"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="59.9"
+                android:gravity="center" />
+
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_dash"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:gravity="center"/>
+
+            <EditText
+                android:id="@+id/add_class_grade_weight_F_min"
+                android:layout_width="55dp"
+                android:layout_height="48dp"
+                android:inputType="number"
+                android:text="0"
+                android:gravity="center" />
+
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/class_grade_weight_percent"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/update_class_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/update_course" />
+    </LinearLayout>
+</ScrollView>

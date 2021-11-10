@@ -9,6 +9,7 @@ import android.view.*
 import android.widget.TextView
 import android.widget.Toast
 import android.app.AlertDialog
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProviders
@@ -47,6 +48,7 @@ class SemesterFragment : Fragment() {
         fun onCourseSelected(courseId: UUID)
         //Should Direct user to create course Screen
         fun onAddCourseSelected(semesterId: UUID)
+        fun onEditCoursePressed(courseId: UUID, semesterId: UUID)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -170,9 +172,19 @@ class SemesterFragment : Fragment() {
         private lateinit var course: Course
 
         private val courseNameTextView: TextView = itemView.findViewById(R.id.course_view_title)
+        private val editCourseButton: Button = itemView.findViewById(R.id.edit_course_Button)
+        private val deleteCourseButton: Button = itemView.findViewById(R.id.delete_course_Button)
 
         init {
             itemView.setOnClickListener(this)
+            editCourseButton.setOnClickListener{
+//                Toast.makeText(context, "${course.courseName.uppercase()} Edit", Toast.LENGTH_SHORT)
+//                    .show()
+                callbacks?.onEditCoursePressed(course.CourseID,semester.id)
+            }
+            deleteCourseButton.setOnClickListener{
+                deleteCourse(this.course)
+            }
         }
 
         fun bind (course: Course) {

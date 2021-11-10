@@ -55,13 +55,22 @@ class GradeCheckRepository private constructor(context: Context){
 
     fun getCourse(id: UUID): LiveData<Course?> = courseDao.getCourse(id)
 
+    fun updateCourse(course: Course) {
+        executor.execute {
+            courseDao.updateCourse(course)
+        }
+    }
+
     fun addCourse(course: Course) {
         executor.execute {
             courseDao.addCourse(course)
         }
     }
-    fun deleteCourse(course: Course){
 
+    fun deleteCourse(course: Course){
+        executor.execute{
+            courseDao.deleteCourse(course)
+        }
     }
 
     //Assignment functions
