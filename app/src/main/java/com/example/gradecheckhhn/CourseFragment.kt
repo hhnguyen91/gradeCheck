@@ -3,10 +3,9 @@ package com.example.gradecheckhhn
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.gradecheckhhn.databaseEntities.Course
 import java.util.*
@@ -17,12 +16,15 @@ private const val ARG_COURSE_ID = "course_id"
 class CourseFragment : Fragment() {
 
     private lateinit var course: Course
-    private lateinit var courseNameField: EditText
+    //private lateinit var courseNameField: EditText
+
+    private lateinit var courseTitle: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         course = Course()
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -32,10 +34,18 @@ class CourseFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_course,container,false)
 
-        courseNameField = view.findViewById(R.id.add_class_course_name) as EditText
+        courseTitle = view.findViewById(R.id.class_title)
 
+        //courseNameField = view.findViewById(R.id.add_class_course_name) as EditText
+        //courseTitle.text = "${course.courseName.uppercase()}"
         return view
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+
 
     override fun onStart() {
         super.onStart()
@@ -65,9 +75,14 @@ class CourseFragment : Fragment() {
             }
         }
 
-        courseNameField.addTextChangedListener(titleMatcher)
+        //courseNameField.addTextChangedListener(titleMatcher)
 
     }
+
+    // Change the menu from adding course to assignment
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+           inflater.inflate(R.menu.fragment_assignment_list,menu)
+        }
 
     companion object {
         fun newInstance(courseId: UUID): CourseFragment {

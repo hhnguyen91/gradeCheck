@@ -9,7 +9,8 @@ import java.util.*
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity(),
     SemesterListFragment.Callbacks, AddSemesterFragment.Callbacks
-    ,SemesterFragment.Callbacks, AddCourseFragment.Callbacks, SemesterEditFragment.Callbacks{
+    ,SemesterFragment.Callbacks, AddCourseFragment.Callbacks,
+    SemesterEditFragment.Callbacks {
 
     lateinit var currentSemesterID : UUID
 
