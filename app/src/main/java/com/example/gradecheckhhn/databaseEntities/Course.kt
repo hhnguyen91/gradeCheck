@@ -2,11 +2,19 @@ package com.example.gradecheckhhn.databaseEntities
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity
-data class Course (@PrimaryKey val CourseID: UUID = UUID.randomUUID(),
+@Entity ( foreignKeys = [ForeignKey(
+    entity = Semester::class,
+    parentColumns = arrayOf("id"),
+    childColumns = arrayOf("SemesterID"),
+    onDelete = ForeignKey.CASCADE
+)]
+)
+data class Course (
+        @PrimaryKey val CourseID: UUID = UUID.randomUUID(),
                    var SemesterID: String = "",
                    var courseName: String = "",
 // List of Breakdown Var go here 6 Breakdown
