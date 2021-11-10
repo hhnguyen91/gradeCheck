@@ -156,8 +156,7 @@ class CourseEditFragment : Fragment() {
         super.onStart()
 
         updateCourseButton.setOnClickListener{
-            Toast.makeText(context,"Course Updated", Toast.LENGTH_SHORT)
-                .show()
+
             course.courseName = courseName.text.toString()
 
             course.breakdown1Name = breakdownOne.text.toString()
@@ -193,6 +192,9 @@ class CourseEditFragment : Fragment() {
             course.minF = minF.text.toString().toDouble()
 
             editCourseViewModel.updateCourse(course)
+
+            Toast.makeText(context,"${course.courseName} Updated", Toast.LENGTH_SHORT)
+                .show()
 
             val semesterId = arguments?.getSerializable(ARG_SEMESTER_ID) as UUID
             callbacks?.onUpdateCourseSelected(semesterId)
