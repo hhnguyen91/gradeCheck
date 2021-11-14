@@ -10,7 +10,8 @@ private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity(),
     SemesterListFragment.Callbacks, AddSemesterFragment.Callbacks
     ,SemesterFragment.Callbacks, AddCourseFragment.Callbacks,
-    SemesterEditFragment.Callbacks,CourseEditFragment.Callbacks {
+    SemesterEditFragment.Callbacks,CourseEditFragment.Callbacks,
+    CourseFragment.Callbacks{
 
     lateinit var currentSemesterID : UUID
 
@@ -127,6 +128,9 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
+    override fun onEditAssignmentPressed(assignmentID: UUID, courseId: UUID, semesterId: UUID) {
+        Log.d(TAG,"Editing Assignment")
+    }
 
 
 }
