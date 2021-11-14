@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import com.example.gradecheckhhn.databaseEntities.Assignment
 import com.example.gradecheckhhn.databaseEntities.Course
 import java.util.*
 
@@ -20,6 +23,9 @@ class CourseFragment : Fragment() {
 
     private lateinit var courseTitle: TextView
 
+    interface Callbacks {
+        fun onEditCoursePressed(assignmentID: UUID, courseId: UUID, semesterId: UUID)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,6 +98,21 @@ class CourseFragment : Fragment() {
             return CourseFragment().apply{
                 arguments = args
             }
+        }
+    }
+
+    private inner class AssignmentHolder(view: View)
+        :RecyclerView.ViewHolder(view), View.OnClickListener{
+        private lateinit var assignment: Assignment
+
+        private val editAssignmentButton: Button = itemView.findViewById(R.id.edit_assignment_Button)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+
         }
     }
 }
