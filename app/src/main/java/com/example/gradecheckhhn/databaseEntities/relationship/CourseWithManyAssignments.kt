@@ -9,7 +9,7 @@ data class CourseWithManyAssignments(
     @Embedded val course : Course,
     @Relation(
         parentColumn = "CourseID",
-        entityColumn =  "AssignmentID"
+        entityColumn =  "CourseID"
     )
     val assignmentList: List<Assignment>
 )

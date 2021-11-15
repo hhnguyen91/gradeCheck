@@ -13,10 +13,10 @@ interface AssignmentDao {
 
     @Query("SELECT * FROM assignment WHERE AssignmentID=(:id)")
     fun getAssignment(id: UUID): LiveData<Assignment?>
-/*
+
     @Insert
-    fun addCourse(assignment: Assignment)
-*/
+    fun addAssignment(assignment: Assignment)
+
     @Update
     fun updateAssignment(assignment: Assignment)
 

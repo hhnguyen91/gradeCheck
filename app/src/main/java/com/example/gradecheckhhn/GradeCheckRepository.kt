@@ -84,6 +84,13 @@ class GradeCheckRepository private constructor(context: Context){
             }
         }
     */
+
+    fun addAssignment(assignment: Assignment){
+        executor.execute{
+            assignmentDao.addAssignment(assignment)
+        }
+    }
+
     fun deleteAssignment(assignment: Assignment) {
         executor.execute {
             assignmentDao.deleteAssignment(assignment)
