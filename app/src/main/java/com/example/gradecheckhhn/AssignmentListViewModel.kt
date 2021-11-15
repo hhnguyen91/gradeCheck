@@ -7,11 +7,11 @@ class AssignmentListViewModel : ViewModel() {
 
     private val gradeCheckRepository = GradeCheckRepository.get()
     val assignmentListLiveData = gradeCheckRepository.getAssignments()
-/*
+
     fun addAssignment(assignment: Assignment) {
-        assignmentRepository.addAssignment(assignment)
+        //assignmentRepository.addAssignment(assignment)
     }
-*/
+
     fun deleteAssignment(assignment: Assignment) {
         gradeCheckRepository.deleteAssignment(assignment)
     }
