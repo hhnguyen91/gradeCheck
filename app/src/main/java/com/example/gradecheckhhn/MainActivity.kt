@@ -10,7 +10,7 @@ private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity(),
     SemesterListFragment.Callbacks, AddSemesterFragment.Callbacks
     ,SemesterFragment.Callbacks, AddCourseFragment.Callbacks,
-    SemesterEditFragment.Callbacks,CourseEditFragment.Callbacks,
+    SemesterEditFragment.Callbacks,CourseEditFragment.Callbacks,AddAssignment.Callbacks,
     CourseFragment.Callbacks{
 
     lateinit var currentSemesterID : UUID
@@ -137,6 +137,16 @@ class MainActivity : AppCompatActivity(),
             .addToBackStack(null)
             .commit()
     }
+
+    override fun onAddAssignment(){
+        Log.d(TAG,"Add Assignment")
+        val fragment = AssignmentFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+     }
 
 
 }

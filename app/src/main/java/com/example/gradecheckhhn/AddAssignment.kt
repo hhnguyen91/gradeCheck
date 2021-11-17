@@ -21,7 +21,8 @@ class AddAssignment : Fragment(){
         fun onAddAssignment()
     }
 
-    private var callbacks: AddAssignment.Callbacks? = null
+    //private var callbacks: AddAssignment.Callbacks? = null
+    private var callbacks: Callbacks? = null
 
     /*Characteristics listed inside of the add assignment list fragment
     * which is of type assignment

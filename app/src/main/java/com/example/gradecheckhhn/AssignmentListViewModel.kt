@@ -10,6 +10,7 @@ class AssignmentListViewModel : ViewModel() {
 
     fun addAssignment(assignment: Assignment) {
         //assignmentRepository.addAssignment(assignment)
+        gradeCheckRepository.addAssignment(assignment)
     }
 
     fun deleteAssignment(assignment: Assignment) {
