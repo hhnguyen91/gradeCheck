@@ -128,8 +128,14 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
-    override fun onEditAssignmentPressed(assignmentID: UUID, courseId: UUID, semesterId: UUID) {
+    override fun onEditAssignmentPressed(assignmentID: UUID, courseID: UUID, semesterID: UUID) {
         Log.d(TAG,"Editing Assignment")
+        val fragment = AssignmentEditFragment.newInstance(assignmentID,courseID,semesterID)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container,fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
 

@@ -14,9 +14,11 @@ import com.example.gradecheckhhn.databaseEntities.Assignment
 import java.util.*
 
 private const val ARG_ASSIGNMENT_ID = "assignment_id"
+private const val ARG_COURSE_ID = "course_id"
+private const val ARG_SEMESTER_ID = "semester_id"
 
 // Don't call this fragment until add Assignment fragment is completed
-class AssginmentEditFragment : Fragment() {
+class AssignmentEditFragment : Fragment() {
     private lateinit var assignment :Assignment
 
     private lateinit var assignmentName : EditText
@@ -56,11 +58,13 @@ class AssginmentEditFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(assignmentID : UUID): AssginmentEditFragment {
+        fun newInstance(assignmentID : UUID,courseID: UUID, semesterID:UUID): AssignmentEditFragment {
         val args = Bundle().apply {
             putSerializable(ARG_ASSIGNMENT_ID,assignmentID)
+            putSerializable(ARG_COURSE_ID, courseID)
+            putSerializable(ARG_SEMESTER_ID,semesterID)
         }
-            return AssginmentEditFragment().apply{
+            return AssignmentEditFragment().apply{
                 arguments = args
             }
         }
@@ -84,7 +88,7 @@ class AssginmentEditFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as AssginmentEditFragment.Callbacks?
+        callbacks = context as AssignmentEditFragment.Callbacks?
     }
 
     override fun onDetach() {
