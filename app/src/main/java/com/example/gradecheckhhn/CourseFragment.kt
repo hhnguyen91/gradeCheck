@@ -31,10 +31,12 @@ class CourseFragment : Fragment() {
 
     interface Callbacks {
         fun onEditAssignmentPressed(assignmentID: UUID, courseId: UUID, semesterId: UUID)
+        fun onAddAssignmentSelected(courseId: UUID, semesterId: UUID)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        semester = Semester()
         course = Course()
         setHasOptionsMenu(true)
     }
@@ -97,6 +99,18 @@ class CourseFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
            inflater.inflate(R.menu.fragment_assignment_list,menu)
         }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.new_assignment ->
+            {
+                Log.d(TAG,"Directing user to create assignment form")
+                callbacks?.onAddAssignmentSelected(course.CourseID, semester.id)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
     companion object {
         fun newInstance(courseId: UUID): CourseFragment {

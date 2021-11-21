@@ -11,17 +11,21 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.gradecheckhhn.databaseEntities.Assignment
-import com.example.gradecheckhhn.databaseEntities.Semester
+import java.util.*
 
-class AddAssignment : Fragment(){
+private const val ARG_SEMESTER_ID = "semester_id"
+private const val ARG_COURSE_ID = "course_id"
+
+class AddAssignmentFragment : Fragment(){
+
+
     interface Callbacks {
         fun onAddAssignment()
     }
 
-    //private var callbacks: AddAssignment.Callbacks? = null
+    //private var callbacks: AddAssignmentFragment.Callbacks? = null
     private var callbacks: Callbacks? = null
 
     /*Characteristics listed inside of the add assignment list fragment
@@ -39,7 +43,7 @@ class AddAssignment : Fragment(){
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as AddAssignment.Callbacks?
+        callbacks = context as AddAssignmentFragment.Callbacks?
     }
 
     override fun onCreateView(
@@ -84,18 +88,17 @@ class AddAssignment : Fragment(){
             if (assignmentPoints.text.isNotEmpty() && assignmentMaxPoints.text.isNotEmpty() &&
                     assignmentName.text.isNotEmpty()) {
                 addAssignmentButton.apply {
-                    isEnabled = true
+                    //isEnabled = true
                 }
             }
 
-           //assignment.assignmentName = assignmentName.toString()
+            //assignment.assignmentName = assignmentName.toString()
             //assignment.currentPoints = assignmentPoints.toString()
             //semester.year = yearInput.toString()
             //semester.season= seasonInput.toString()
         }
 
         override fun afterTextChanged(s: Editable?) {
-            TODO("Not yet implemented")
         }
     }
 
@@ -120,4 +123,15 @@ class AddAssignment : Fragment(){
 
     }
 
+    companion object {
+        fun newInstance(courseId: UUID,semesterId: UUID) : AddAssignmentFragment {
+            var args = Bundle().apply {
+                putSerializable(ARG_SEMESTER_ID,semesterId)
+                putSerializable(ARG_COURSE_ID,courseId)
+            }
+            return AddAssignmentFragment().apply{
+                arguments = args
+            }
+        }
     }
+}
