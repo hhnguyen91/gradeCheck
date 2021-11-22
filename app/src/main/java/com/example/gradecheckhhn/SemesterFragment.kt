@@ -134,9 +134,6 @@ class SemesterFragment : Fragment() {
         return when (item.itemId){
             R.id.new_course ->
             {
-                //val course = Course()
-                //courseListViewModel.addCourse(course)
-                //callbacks?.onCourseSelected(course.CourseID)
                 Log.d(TAG,"Directing user to create course form")
                 callbacks?.onAddCourseSelected(semester.id)
                 true
