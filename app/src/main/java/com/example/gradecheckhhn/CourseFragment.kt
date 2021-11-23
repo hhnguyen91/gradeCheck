@@ -281,8 +281,7 @@ class CourseFragment : Fragment() {
         private lateinit var assignment: Assignment
 
         private val assignmentNameTextView: TextView = itemView.findViewById(R.id.assignment_name_title)
-        private val assignmentCurrentScoreTextView: TextView = itemView.findViewById(R.id.assignment_list_current_score)
-        private val assignmentMaxScoreTextView: TextView = itemView.findViewById(R.id.assignment_list_max_score)
+        private val assignmentGradeTextView: TextView = itemView.findViewById(R.id.assignment_list_grade)
         private val deleteAssignmentButton: Button = itemView.findViewById(R.id.delete_assignment_Button)
         private val editAssignmentButton: Button = itemView.findViewById(R.id.edit_assignment_Button)
 
@@ -293,17 +292,17 @@ class CourseFragment : Fragment() {
             }
         }
 
-        @SuppressLint("SetTextI18n")
+
         fun bind(assignment: Assignment) {
             this.assignment = assignment
-            //val grade : String = "Grade ${this.assignment.currentPoints}/${this.assignment.maximumPoints}"
-            Log.i(TAG,"Assignment Title: ${assignment.assignmentName}")
-            Log.i(TAG,"Assignment current score: ${assignment.currentPoints}")
-            Log.i(TAG,"Assignment max score: ${assignment.maximumPoints}")
             assignmentNameTextView.text = this.assignment.assignmentName
-            assignmentCurrentScoreTextView.text = this.assignment.currentPoints.toString()
-            assignmentMaxScoreTextView.text = this.assignment.maximumPoints.toString()
-            //assignmentGradeTextView.text = "Grade ${this.assignment.currentPoints}/${this.assignment.maximumPoints}"
+            // Must use buildString to set text with multiple arguments
+            assignmentGradeTextView.text = buildString {
+                    append("Grade: ")
+                    append(assignment.currentPoints)
+                    append("/")
+                    append(assignment.maximumPoints)
+                }
         }
 
         override fun onClick(v: View?) {
