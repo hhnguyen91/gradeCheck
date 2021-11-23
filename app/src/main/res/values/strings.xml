@@ -45,11 +45,12 @@
     <string name="assignment_max_points">N/A</string>
     <string name="assignment_points_slash">/</string>
     <string name="add_assignment_name_hint">Enter the name of the assignment.</string>
-    <string name='CourseBreakdownLabel1'> </string>
-    <string name='CourseBreakdownLabel2'> </string>
-    <string name='CourseBreakdownLabel3'> </string>
-    <string name='CourseBreakdownLabel4'> </string>
-    <string name='CourseBreakdownLabel5'> </string>
+    <string name='CourseBreakdownLabel1'>1 </string>
+    <string name='CourseBreakdownLabel2'>2 </string>
+    <string name='CourseBreakdownLabel3'>3 </string>
+    <string name='CourseBreakdownLabel4'>4 </string>
+    <string name='CourseBreakdownLabel5'>5 </string>
     <string name='CourseBreakdownLabelFinal'>Final</string>
     <string name="update_course">Update Course</string>
+    <string name="assignment_list_grade">Grade:</string>
 </resources>

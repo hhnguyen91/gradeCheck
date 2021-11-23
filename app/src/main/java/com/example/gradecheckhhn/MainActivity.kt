@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity(),
     CourseFragment.Callbacks{
 
     lateinit var currentSemesterID : UUID
+    lateinit var currentCourseID : UUID
+    lateinit var currentAssignmentID : UUID
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,7 +84,8 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCourseSelected(courseId: UUID) {
         Log.d(TAG,"MainActivity.onClassSelected: $courseId")
-        val fragment = CourseFragment.newInstance(courseId)
+        currentCourseID = courseId
+        val fragment = CourseFragment.newInstance(currentCourseID)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
@@ -147,9 +150,20 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
-    override fun onAddAssignment(){
+    override fun onAssignmentSelected(assignmentID: UUID) {
+        currentAssignmentID = assignmentID
+        val fragment = AssignmentFragment.newInstance(currentAssignmentID)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+
+    }
+
+    override fun onAddAssignmentButtonPressed(){
         Log.d(TAG,"Add Assignment")
-        val fragment = AssignmentFragment()
+        val fragment = CourseFragment.newInstance(currentCourseID)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)

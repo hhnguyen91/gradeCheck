@@ -7,6 +7,7 @@ import com.example.gradecheckhhn.database.AppDatabase
 import com.example.gradecheckhhn.databaseEntities.Assignment
 import com.example.gradecheckhhn.databaseEntities.Course
 import com.example.gradecheckhhn.databaseEntities.Semester
+import com.example.gradecheckhhn.databaseEntities.relationship.CourseWithManyAssignments
 import com.example.gradecheckhhn.databaseEntities.relationship.SemesterWithManyCourses
 import java.lang.IllegalStateException
 import java.util.*
@@ -74,16 +75,21 @@ class GradeCheckRepository private constructor(context: Context){
     }
 
     //Assignment functions
-    fun getAssignments(): LiveData<List<Assignment>> = assignmentDao.getAssignments()
+    fun getAssignments(id: UUID): LiveData<List<CourseWithManyAssignments>> = assignmentDao.getAssignments(id)
 
     fun getAssignment(id: UUID): LiveData<Assignment?> = assignmentDao.getAssignment(id)
-    /*
-        fun addAssignment(assignment: Assignment) {
-            executor.execute {
-                assignmentDao.addAssignment(assignment)
-            }
+//
+//        fun addAssignment(assignment: Assignment) {
+//            executor.execute {
+//                assignmentDao.addAssignment(assignment)
+//            }
+//        }
+
+    fun updateAssignment(assignment: Assignment){
+        executor.execute{
+            assignmentDao.updateAssignment(assignment)
         }
-    */
+    }
 
     fun addAssignment(assignment: Assignment){
         executor.execute{

@@ -18,19 +18,23 @@
             android:layout_height="wrap_content"
             android:text="@string/class_title"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <LinearLayout
+            android:id = "@+id/Course_breakdown_One_Section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/Course_Breakdown_Label_One"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 android:layout_marginTop="8dp"
                 android:text="@string/CourseBreakdownLabel1" />
 
@@ -41,15 +45,19 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id = "@+id/Course_breakdown_Two_Section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="invisible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/Course_Breakdown_Label_Two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 android:layout_marginTop="8dp"
                 android:text="@string/CourseBreakdownLabel2" />
 
@@ -60,15 +68,19 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id = "@+id/Course_breakdown_Three_Section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="invisible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/Course_Breakdown_Label_Three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 android:layout_marginTop="8dp"
                 android:text="@string/CourseBreakdownLabel3" />
 
@@ -79,15 +91,19 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/Course_breakdown_Four_Section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="invisible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/Course_Breakdown_Label_Four"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 android:layout_marginTop="8dp"
                 android:text="@string/CourseBreakdownLabel4" />
 
@@ -98,15 +114,21 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id = "@+id/Course_breakdown_Five_Section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
             android:orientation="vertical"
-            android:visibility="invisible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/Course_Breakdown_Label_Five"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 android:layout_marginTop="8dp"
                 android:text="@string/CourseBreakdownLabel5" />
 
@@ -125,7 +147,10 @@
                 android:id="@+id/Course_Breakdown_Label_Final"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
                 android:layout_marginTop="8dp"
+                android:textStyle="bold"
                 android:text="@string/CourseBreakdownLabelFinal" />
 
             <androidx.recyclerview.widget.RecyclerView
