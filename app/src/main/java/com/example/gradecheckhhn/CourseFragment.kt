@@ -69,6 +69,7 @@ class CourseFragment : Fragment() {
         fun onEditAssignmentPressed(assignmentID: UUID, courseId: UUID, semesterId: UUID)
         fun onAddAssignmentSelected(courseId: UUID, semesterId: UUID)
         fun onAssignmentSelected(assignmentID: UUID)
+        fun refreshAssignmentPage()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -225,12 +226,6 @@ class CourseFragment : Fragment() {
             }
         }
 
-        if(breakDownOneList.size > 0) totalWeight += breakDownOneWeight
-        if(breakDownTwoList.size > 0) totalWeight += breakDownTwoWeight
-        if(breakDownThreeList.size > 0) totalWeight += breakDownThreeWeight
-        if(breakDownFourList.size > 0) totalWeight += breakDownFourWeight
-        if(breakDownFiveList.size > 0) totalWeight += breakDownFiveWeight
-
         var breakdownOneGrade : Double = 0.0
         var breakdownTwoGrade : Double = 0.0
         var breakdownThreeGrade : Double = 0.0
@@ -240,43 +235,58 @@ class CourseFragment : Fragment() {
         var currentPoints : Double = 0.0
         var maxPoints: Double = 0.0
 
-        for (assignment in breakDownOneList) {
-            currentPoints += assignment.currentPoints
-            maxPoints += assignment.maximumPoints
+        if(breakDownOneList.size > 0) {
+            totalWeight += breakDownOneWeight
+            for (assignment in breakDownOneList) {
+                currentPoints += assignment.currentPoints
+                maxPoints += assignment.maximumPoints
+            }
+            breakdownOneGrade = (currentPoints / maxPoints) * breakDownOneWeight
         }
-        breakdownOneGrade = (currentPoints/maxPoints) * breakDownOneWeight
         currentPoints = 0.0
         maxPoints = 0.0
 
-        for (assignment in breakDownTwoList) {
-            currentPoints += assignment.currentPoints
-            maxPoints += assignment.maximumPoints
+        if(breakDownTwoList.size > 0) {
+            totalWeight += breakDownTwoWeight
+            for (assignment in breakDownTwoList) {
+                currentPoints += assignment.currentPoints
+                maxPoints += assignment.maximumPoints
+            }
+            breakdownTwoGrade = (currentPoints / maxPoints) * breakDownTwoWeight
         }
-        breakdownTwoGrade = (currentPoints/maxPoints) * breakDownTwoWeight
         currentPoints = 0.0
         maxPoints = 0.0
 
-        for (assignment in breakDownThreeList) {
-            currentPoints += assignment.currentPoints
-            maxPoints += assignment.maximumPoints
+        if(breakDownThreeList.size > 0) {
+            totalWeight += breakDownThreeWeight
+            for (assignment in breakDownThreeList) {
+                currentPoints += assignment.currentPoints
+                maxPoints += assignment.maximumPoints
+            }
+            breakdownThreeGrade = (currentPoints / maxPoints) * breakDownThreeWeight
         }
-        breakdownThreeGrade = (currentPoints/maxPoints) * breakDownThreeWeight
         currentPoints = 0.0
         maxPoints = 0.0
 
-        for (assignment in breakDownFourList) {
-            currentPoints += assignment.currentPoints
-            maxPoints += assignment.maximumPoints
+        if(breakDownFourList.size > 0) {
+            totalWeight += breakDownFourWeight
+            for (assignment in breakDownFourList) {
+                currentPoints += assignment.currentPoints
+                maxPoints += assignment.maximumPoints
+            }
+            breakdownFourGrade = (currentPoints / maxPoints) * breakDownFourWeight
         }
-        breakdownFourGrade = (currentPoints/maxPoints) * breakDownFourWeight
         currentPoints = 0.0
         maxPoints = 0.0
 
-        for (assignment in breakDownFiveList) {
-            currentPoints += assignment.currentPoints
-            maxPoints += assignment.maximumPoints
+        if(breakDownFiveList.size > 0) {
+            totalWeight += breakDownFiveWeight
+            for (assignment in breakDownFiveList) {
+                currentPoints += assignment.currentPoints
+                maxPoints += assignment.maximumPoints
+            }
+            breakdownFiveGrade = (currentPoints / maxPoints) * breakDownFiveWeight
         }
-        breakdownFiveGrade =  (currentPoints/maxPoints) * breakDownFiveWeight
 
         var grade = ((breakdownOneGrade + breakdownTwoGrade + breakdownThreeGrade + breakdownFourGrade + breakdownFiveGrade)/totalWeight) * 100
         val rounded = String.format("%.2f", grade)
@@ -467,10 +477,12 @@ class CourseFragment : Fragment() {
         builder.setMessage("Are you sure you want to delete ${assignment.assignmentName.uppercase()}?")
         builder.setPositiveButton("Yes",DialogInterface.OnClickListener{dialog, id ->
             assignmentListViewModel.deleteAssignment(assignment)
+            callbacks?.refreshAssignmentPage()
 
             Toast.makeText(context,"${assignment.assignmentName.uppercase()} deleted", Toast.LENGTH_SHORT)
                 .show()
             dialog.cancel()
+
         })
         builder.setNegativeButton("No", DialogInterface.OnClickListener { dialog, id->
             dialog.cancel()

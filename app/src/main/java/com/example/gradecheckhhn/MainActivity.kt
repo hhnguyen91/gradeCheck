@@ -162,6 +162,15 @@ class MainActivity : AppCompatActivity(),
 
     }
 
+    override fun refreshAssignmentPage() {
+        val fragment = CourseFragment.newInstance(currentCourseID)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
     override fun onAddAssignmentButtonPressed(){
         Log.d(TAG,"Add Assignment")
         val fragment = CourseFragment.newInstance(currentCourseID)
