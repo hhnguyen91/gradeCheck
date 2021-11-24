@@ -173,8 +173,13 @@ class MainActivity : AppCompatActivity(),
      }
 
     // Direct user back to the course fragment
-    override fun onUpdateAssignmentSelected(semesterID: UUID, courseID: UUID) {
-        TODO("Not yet implemented")
+    override fun onUpdateAssignmentSelected(courseID: UUID) {
+        val fragment = CourseFragment.newInstance(courseID)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
 }
