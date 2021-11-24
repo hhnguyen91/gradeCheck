@@ -34,6 +34,9 @@ class CourseFragment : Fragment() {
     private lateinit var semester: Semester
     private lateinit var course: Course
 
+    private lateinit var courseTitle: TextView
+    private lateinit var courseGrade: TextView
+
     private lateinit var breakdownOneSection : LinearLayout
     private lateinit var breakdownTwoSection : LinearLayout
     private lateinit var breakdownThreeSection : LinearLayout
@@ -45,8 +48,6 @@ class CourseFragment : Fragment() {
     private lateinit var breakdownThreeTitle: TextView
     private lateinit var breakdownFourTitle: TextView
     private lateinit var breakdownFiveTitle: TextView
-
-    private lateinit var breakDownOneVal: String
 
     private lateinit var assignmentRecyclerViewBreakdownOne: RecyclerView
     private lateinit var assignmentRecyclerViewBreakdownTwo: RecyclerView
@@ -63,8 +64,6 @@ class CourseFragment : Fragment() {
     private lateinit var assignmentListViewModel: AssignmentListViewModel
     private lateinit var assignmentListViewModelFactory: AssignmentListViewModelFactory
 
-    private lateinit var courseTitle: TextView
-
     private var callbacks: Callbacks? = null
 
     interface Callbacks {
@@ -80,6 +79,7 @@ class CourseFragment : Fragment() {
         assignmentListViewModelFactory = AssignmentListViewModelFactory(courseId)
         assignmentListViewModel = ViewModelProvider(this, assignmentListViewModelFactory).get(AssignmentListViewModel::class.java)
         setHasOptionsMenu(true)
+
     }
 
     override fun onCreateView(
@@ -102,6 +102,7 @@ class CourseFragment : Fragment() {
         breakdownFiveTitle = view.findViewById(R.id.Course_Breakdown_Label_Five)
 
         courseTitle = view.findViewById(R.id.class_title)
+        courseGrade = view.findViewById(R.id.class_grade)
 
         assignmentRecyclerViewBreakdownOne = view.findViewById(R.id.class_breakdown_One)
         assignmentRecyclerViewBreakdownOne.layoutManager = LinearLayoutManager(context)
@@ -123,31 +124,31 @@ class CourseFragment : Fragment() {
         assignmentRecyclerViewBreakdownFive.layoutManager = LinearLayoutManager(context)
         assignmentRecyclerViewBreakdownFive.adapter = adapter
 
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         val courseId = arguments?.getSerializable(ARG_COURSE_ID) as UUID
         Log.i(TAG,"Course: $courseId Selected")
+        course = Course()
         editCourseViewModel.loadCourse(courseId)
         editCourseViewModel.courseLiveData.observe(
             viewLifecycleOwner,
             Observer { course ->
                 course?.let {
                     this.course = course
+                    Log.i(TAG,"Course breakdown1 weight observer: ${course.breakdown1Weight}")
                     updateUI(course)
                 }
             }
         )
-       // courseTitle.text = "${course.courseName.uppercase()}"
-       // Log.i(TAG,"Course: ${course.courseName} Selected")
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
 
     override fun onStart() {
         super.onStart()
-        Log.i(TAG,"Breakdown1: ${breakdownOneTitle.text}")
 
         val titleMatcher = object : TextWatcher {
 
@@ -179,19 +180,33 @@ class CourseFragment : Fragment() {
             Observer { assignments->
                 assignments?.let {
                     showAssignments(assignments)
+                    showGrade(assignments)
                 }
             }
         )
 
+
     }
 
-    private fun showAssignments(assignments: List<CourseWithManyAssignments>) {
+    private fun showGrade(assignments: List<CourseWithManyAssignments>) {
         val listOfAllAssignments : List<Assignment> = assignments[0].assignmentList
+
+        var totalWeight : Double = 0.0
+
         val breakDownOneList : MutableList<Assignment> = ArrayList()
+        val breakDownOneWeight: Double = course.breakdown1Weight
+
         val breakDownTwoList : MutableList<Assignment> = ArrayList()
+        val breakDownTwoWeight: Double = course.breakdown2Weight
+
         val breakDownThreeList : MutableList<Assignment> = ArrayList()
+        val breakDownThreeWeight: Double = course.breakdown3Weight
+
         val breakDownFourList : MutableList<Assignment> = ArrayList()
+        val breakDownFourWeight: Double = course.breakdown4Weight
+
         val breakDownFiveList : MutableList<Assignment> = ArrayList()
+        val breakDownFiveWeight: Double = course.breakdown5Weight
 
         for (assignment in listOfAllAssignments) {
             if(assignment.breakdownName == breakdownOneTitle.text){
@@ -207,6 +222,94 @@ class CourseFragment : Fragment() {
                 breakDownFourList.add(assignment)
             }
             if(assignment.breakdownName == breakdownFiveTitle.text){
+                breakDownFiveList.add(assignment)
+            }
+        }
+
+        if(breakDownOneList.size > 0) totalWeight += breakDownOneWeight
+        if(breakDownTwoList.size > 0) totalWeight += breakDownTwoWeight
+        if(breakDownThreeList.size > 0) totalWeight += breakDownThreeWeight
+        if(breakDownFourList.size > 0) totalWeight += breakDownFourWeight
+        if(breakDownFiveList.size > 0) totalWeight += breakDownFiveWeight
+
+        var breakdownOneGrade : Double = 0.0
+        var breakdownTwoGrade : Double = 0.0
+        var breakdownThreeGrade : Double = 0.0
+        var breakdownFourGrade : Double = 0.0
+        var breakdownFiveGrade : Double = 0.0
+
+        var currentPoints : Double = 0.0
+        var maxPoints: Double = 0.0
+
+        for (assignment in breakDownOneList) {
+            currentPoints += assignment.currentPoints
+            maxPoints += assignment.maximumPoints
+        }
+        breakdownOneGrade = (currentPoints/maxPoints) * breakDownOneWeight
+        currentPoints = 0.0
+        maxPoints = 0.0
+
+        for (assignment in breakDownTwoList) {
+            currentPoints += assignment.currentPoints
+            maxPoints += assignment.maximumPoints
+        }
+        breakdownTwoGrade = (currentPoints/maxPoints) * breakDownTwoWeight
+        currentPoints = 0.0
+        maxPoints = 0.0
+
+        for (assignment in breakDownThreeList) {
+            currentPoints += assignment.currentPoints
+            maxPoints += assignment.maximumPoints
+        }
+        breakdownThreeGrade = (currentPoints/maxPoints) * breakDownThreeWeight
+        currentPoints = 0.0
+        maxPoints = 0.0
+
+        for (assignment in breakDownFourList) {
+            currentPoints += assignment.currentPoints
+            maxPoints += assignment.maximumPoints
+        }
+        breakdownFourGrade = (currentPoints/maxPoints) * breakDownFourWeight
+        currentPoints = 0.0
+        maxPoints = 0.0
+
+        for (assignment in breakDownFiveList) {
+            currentPoints += assignment.currentPoints
+            maxPoints += assignment.maximumPoints
+        }
+        breakdownFiveGrade =  (currentPoints/maxPoints) * breakDownFiveWeight
+
+        var grade = ((breakdownOneGrade + breakdownTwoGrade + breakdownThreeGrade + breakdownFourGrade + breakdownFiveGrade)/totalWeight) * 100
+        val rounded = String.format("%.2f", grade)
+
+        courseGrade.text = buildString {
+            append("Current Grade: ")
+            append(rounded)
+        }
+    }
+
+    private fun showAssignments(assignments: List<CourseWithManyAssignments>) {
+        val listOfAllAssignments : List<Assignment> = assignments[0].assignmentList
+        val breakDownOneList : MutableList<Assignment> = ArrayList()
+        val breakDownTwoList : MutableList<Assignment> = ArrayList()
+        val breakDownThreeList : MutableList<Assignment> = ArrayList()
+        val breakDownFourList : MutableList<Assignment> = ArrayList()
+        val breakDownFiveList : MutableList<Assignment> = ArrayList()
+
+        for (assignment in listOfAllAssignments) {
+            if(assignment.breakdownName == course.breakdown1Name){
+                breakDownOneList.add(assignment)
+            }
+            if(assignment.breakdownName == course.breakdown2Name){
+                breakDownTwoList.add(assignment)
+            }
+            if(assignment.breakdownName == course.breakdown3Name){
+                breakDownThreeList.add(assignment)
+            }
+            if(assignment.breakdownName == course.breakdown4Name){
+                breakDownFourList.add(assignment)
+            }
+            if(assignment.breakdownName == course.breakdown5Name){
                 breakDownFiveList.add(assignment)
             }
         }
@@ -327,6 +430,7 @@ class CourseFragment : Fragment() {
     }
 
     private fun updateUI(course: Course){
+        this.course = course
         //Set course title
         courseTitle.text = "Class: ${course.courseName.uppercase()}"
 

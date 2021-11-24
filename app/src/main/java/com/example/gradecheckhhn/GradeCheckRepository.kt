@@ -54,6 +54,12 @@ class GradeCheckRepository private constructor(context: Context){
     //Course Functions
     fun getCourses(id:UUID): LiveData<List<SemesterWithManyCourses>> = courseDao.getCourses(id)
 
+    fun getStaticCourse(id: UUID) {
+        executor.execute{
+            courseDao.getStaticCourse(id)
+        }
+    }
+
     fun getCourse(id: UUID): LiveData<Course?> = courseDao.getCourse(id)
 
     fun updateCourse(course: Course) {

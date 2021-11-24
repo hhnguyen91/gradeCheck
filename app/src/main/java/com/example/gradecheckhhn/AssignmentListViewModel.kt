@@ -16,4 +16,8 @@ class AssignmentListViewModel (private val courseId: UUID): ViewModel() {
     fun deleteAssignment(assignment: Assignment) {
         gradeCheckRepository.deleteAssignment(assignment)
     }
+
+    fun getStaticCourse(id:UUID){
+        gradeCheckRepository.getStaticCourse(id)
+    }
 }

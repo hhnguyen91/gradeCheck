@@ -16,6 +16,8 @@ interface CourseDao {
     @Query("SELECT * FROM course WHERE CourseID=(:id)")
     fun getCourse(id: UUID): LiveData<Course?>
 
+    @Query("SELECT * FROM course WHERE CourseID=(:id)")
+    fun getStaticCourse(id: UUID): List<Course>
 
     @Update
     fun updateCourse(course: Course)
