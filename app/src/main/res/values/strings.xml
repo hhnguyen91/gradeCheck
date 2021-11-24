@@ -54,4 +54,5 @@
     <string name="update_course">Update Course</string>
     <string name="assignment_list_grade">Grade:</string>
     <string name="update_assignment">Update Assignment</string>
+    <string name="class_grade">Grade: </string>
 </resources>
