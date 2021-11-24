@@ -314,10 +314,25 @@ class CourseFragment : Fragment() {
 
         var grade = ((breakdownOneGrade + breakdownTwoGrade + breakdownThreeGrade + breakdownFourGrade + breakdownFiveGrade + breakdownFinalGrade)/totalWeight) * 100
         val rounded = String.format("%.2f", grade)
+        var letterGrade : String = "A"
+        letterGrade = if(grade > course.minA) {
+            "A"
+        } else if(grade > course.minB){
+            "B"
+        } else if(grade > course.minC){
+            "C"
+        } else if(grade > course.minD){
+            "D"
+        } else {
+            "F"
+        }
 
         courseGrade.text = buildString {
             append("Current Grade: ")
+            append(letterGrade)
+            append(" (")
             append(rounded)
+            append(")")
         }
 
     }
