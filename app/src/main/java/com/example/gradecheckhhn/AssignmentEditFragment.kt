@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -23,7 +21,7 @@ class AssignmentEditFragment : Fragment() {
     private lateinit var assignment :Assignment
 
     private lateinit var assignmentName : EditText
-    private lateinit var breakdownName : EditText
+    private lateinit var breakdownSpinner : Spinner
     private lateinit var currentPoints : EditText
     private lateinit var maximumPoints : EditText
 
@@ -48,13 +46,13 @@ class AssignmentEditFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_edit_assignment, container,false)
 
         assignmentName = view.findViewById(R.id.edit_assignment_name) as EditText
-        //breakdownName = view.findViewById(R.id.edit_assignment_breakdown_name) as EditText
+        breakdownSpinner = view.findViewById(R.id.edit_assignment_breakdown) as Spinner
         currentPoints = view.findViewById(R.id.edit_assignment_current_points) as EditText
         maximumPoints = view.findViewById(R.id.edit_assignment_maximum_points) as EditText
 
         updateAssignmentButton = view.findViewById(R.id.update_assignment_button) as Button
 
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return view
     }
 
     companion object {
@@ -81,10 +79,7 @@ class AssignmentEditFragment : Fragment() {
         }
     }
 
-    private fun updateUI()
-    {
-        assignmentName.setText(assignment.assignmentName)
-    }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -105,10 +100,17 @@ class AssignmentEditFragment : Fragment() {
             Observer { assignment ->
                 assignment?.let {
                     this.assignment = assignment
+                    updateUI()
                 }
             }
         )
     }
 
+    private fun updateUI()
+    {
+        assignmentName.setText(assignment.assignmentName)
+        currentPoints.setText(assignment.currentPoints.toString())
+        maximumPoints.setText(assignment.maximumPoints.toString())
+    }
 }
 
