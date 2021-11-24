@@ -153,6 +153,10 @@ class AddAssignmentFragment : Fragment(){
                             breakdownList
                         )
                     }
+
+                    // Set the dropdrown menu to a specific value
+                    //val select : Int? = (breakDownSpinner.adapter as ArrayAdapter<String>?)?.getPosition("${course.breakdown4Name}")
+                    //select?.let { it1 -> breakDownSpinner.setSelection(it1) }
                 }
             }
         )
