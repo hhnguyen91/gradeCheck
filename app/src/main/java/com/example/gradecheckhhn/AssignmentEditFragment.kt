@@ -126,6 +126,7 @@ class AssignmentEditFragment : Fragment() {
                     if(course.breakdown3Name != "") breakdownList.add(course.breakdown3Name)
                     if(course.breakdown4Name != "") breakdownList.add(course.breakdown4Name)
                     if(course.breakdown5Name != "") breakdownList.add(course.breakdown5Name)
+                    breakdownList.add("Final")
 
                     breakdownSpinner.adapter = context?.let {
                         ArrayAdapter(

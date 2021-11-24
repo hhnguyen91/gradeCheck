@@ -10,6 +10,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.*
 import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -53,6 +54,7 @@ class CourseFragment : Fragment() {
     private lateinit var assignmentRecyclerViewBreakdownThree: RecyclerView
     private lateinit var assignmentRecyclerViewBreakdownFour: RecyclerView
     private lateinit var assignmentRecyclerViewBreakdownFive: RecyclerView
+    private lateinit var assignmentRecyclerViewBreakdownFinal: RecyclerView
 
     private var adapter: AssignmentAdapter = AssignmentAdapter(emptyList())
 
@@ -122,6 +124,10 @@ class CourseFragment : Fragment() {
 
         assignmentRecyclerViewBreakdownFive = view.findViewById(R.id.class_breakdown_Five)
         assignmentRecyclerViewBreakdownFive.layoutManager = LinearLayoutManager(context)
+        assignmentRecyclerViewBreakdownFive.adapter = adapter
+
+        assignmentRecyclerViewBreakdownFinal = view.findViewById(R.id.class_breakdown_Final)
+        assignmentRecyclerViewBreakdownFinal.layoutManager = LinearLayoutManager(context)
         assignmentRecyclerViewBreakdownFive.adapter = adapter
 
         val courseId = arguments?.getSerializable(ARG_COURSE_ID) as UUID
@@ -208,6 +214,9 @@ class CourseFragment : Fragment() {
         val breakDownFiveList : MutableList<Assignment> = ArrayList()
         val breakDownFiveWeight: Double = course.breakdown5Weight
 
+        val breakDownFinalList : MutableList<Assignment> = ArrayList()
+        val breakDownFinalWeight : Double = course.breakdown6Weight
+
         for (assignment in listOfAllAssignments) {
             if(assignment.breakdownName == breakdownOneTitle.text){
                 breakDownOneList.add(assignment)
@@ -224,6 +233,9 @@ class CourseFragment : Fragment() {
             if(assignment.breakdownName == breakdownFiveTitle.text){
                 breakDownFiveList.add(assignment)
             }
+            if(assignment.breakdownName == "Final"){
+                breakDownFinalList.add(assignment)
+            }
         }
 
         var breakdownOneGrade : Double = 0.0
@@ -231,6 +243,7 @@ class CourseFragment : Fragment() {
         var breakdownThreeGrade : Double = 0.0
         var breakdownFourGrade : Double = 0.0
         var breakdownFiveGrade : Double = 0.0
+        var breakdownFinalGrade : Double = 0.0
 
         var currentPoints : Double = 0.0
         var maxPoints: Double = 0.0
@@ -287,14 +300,26 @@ class CourseFragment : Fragment() {
             }
             breakdownFiveGrade = (currentPoints / maxPoints) * breakDownFiveWeight
         }
+        currentPoints = 0.0
+        maxPoints = 0.0
 
-        var grade = ((breakdownOneGrade + breakdownTwoGrade + breakdownThreeGrade + breakdownFourGrade + breakdownFiveGrade)/totalWeight) * 100
+        if(breakDownFinalList.size > 0) {
+            totalWeight += breakDownFinalWeight
+            for (assignment in breakDownFinalList) {
+                currentPoints += assignment.currentPoints
+                maxPoints += assignment.maximumPoints
+            }
+            breakdownFinalGrade = (currentPoints / maxPoints) * breakDownFinalWeight
+        }
+
+        var grade = ((breakdownOneGrade + breakdownTwoGrade + breakdownThreeGrade + breakdownFourGrade + breakdownFiveGrade + breakdownFinalGrade)/totalWeight) * 100
         val rounded = String.format("%.2f", grade)
 
         courseGrade.text = buildString {
             append("Current Grade: ")
             append(rounded)
         }
+
     }
 
     private fun showAssignments(assignments: List<CourseWithManyAssignments>) {
@@ -304,6 +329,7 @@ class CourseFragment : Fragment() {
         val breakDownThreeList : MutableList<Assignment> = ArrayList()
         val breakDownFourList : MutableList<Assignment> = ArrayList()
         val breakDownFiveList : MutableList<Assignment> = ArrayList()
+        val breakDownFinalList : MutableList<Assignment> = ArrayList()
 
         for (assignment in listOfAllAssignments) {
             if(assignment.breakdownName == course.breakdown1Name){
@@ -320,6 +346,9 @@ class CourseFragment : Fragment() {
             }
             if(assignment.breakdownName == course.breakdown5Name){
                 breakDownFiveList.add(assignment)
+            }
+            if(assignment.breakdownName == "Final"){
+                breakDownFinalList.add(assignment)
             }
         }
 
@@ -346,6 +375,11 @@ class CourseFragment : Fragment() {
         if(breakDownFiveList.size > 0) {
             adapter = AssignmentAdapter(breakDownFiveList)
             assignmentRecyclerViewBreakdownFive.adapter = adapter
+        }
+
+        if(breakDownFinalList.size > 0) {
+            adapter = AssignmentAdapter(breakDownFinalList)
+            assignmentRecyclerViewBreakdownFinal.adapter = adapter
         }
 
     }
