@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.gradecheckhhn.databaseEntities.Assignment
+import com.example.gradecheckhhn.databaseEntities.Course
 import java.util.*
 
 private const val ARG_ASSIGNMENT_ID = "assignment_id"
@@ -20,24 +20,30 @@ private const val ARG_SEMESTER_ID = "semester_id"
 // Don't call this fragment until add Assignment fragment is completed
 class AssignmentEditFragment : Fragment() {
     private lateinit var assignment :Assignment
+    private lateinit var course: Course
 
     private lateinit var assignmentName : EditText
-    private lateinit var breakdownName : EditText
+    private lateinit var breakdownSpinner : Spinner
     private lateinit var currentPoints : EditText
     private lateinit var maximumPoints : EditText
 
+    private lateinit var breakdownList : MutableList<String>
+
     private lateinit var updateAssignmentButton: Button
 
-    /*
-    private val editCourseViewModel: AssignmentEditViewModel by lazy {
+
+    private val editAssignmentViewModel: AssignmentEditViewModel by lazy {
         ViewModelProviders.of(this).get(AssignmentEditViewModel::class.java)
     }
-    */
+
+    private val editCourseViewModel: CourseEditViewModel by lazy {
+        ViewModelProviders.of(this).get(CourseEditViewModel::class.java)
+    }
 
     private var callbacks: Callbacks? = null
 
     interface Callbacks {
-        fun onUpdateAssignmentSelected()
+        fun onUpdateAssignmentSelected(courseID: UUID)
     }
 
     override fun onCreateView(
@@ -45,16 +51,16 @@ class AssignmentEditFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //val view = inflater.inflate(R.layout.fragment_assignment_edit, container,false)
+        val view = inflater.inflate(R.layout.fragment_edit_assignment, container,false)
 
-        //assignmentName = view.findViewById(R.id.edit_assignment_name) as EditText
-        //breakdownName = view.findViewById(R.id.edit_assignment_breakdown_name) as EditText
-        //currentPoints = view.findViewById(R.id.edit_assignment_current_points) as EditText
-        //maximumPoints = view.findViewById(R.id.edit_assignment_max_points) as EditText
+        assignmentName = view.findViewById(R.id.edit_assignment_name) as EditText
+        breakdownSpinner = view.findViewById(R.id.edit_assignment_breakdown) as Spinner
+        currentPoints = view.findViewById(R.id.edit_assignment_current_points) as EditText
+        maximumPoints = view.findViewById(R.id.edit_assignment_maximum_points) as EditText
 
-        //updateAssignmentButton = view.findViewById(R.id.update_assignment_button) as Button
+        updateAssignmentButton = view.findViewById(R.id.update_assignment_button) as Button
 
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return view
     }
 
     companion object {
@@ -74,21 +80,26 @@ class AssignmentEditFragment : Fragment() {
         super.onStart()
 
         updateAssignmentButton.setOnClickListener{
+            assignment.assignmentName = assignmentName.text.toString()
+            assignment.breakdownName = breakdownSpinner.selectedItem.toString()
+            assignment.currentPoints = currentPoints.text.toString().toDouble()
+            assignment.maximumPoints = maximumPoints.text.toString().toDouble()
+
+            editAssignmentViewModel.updateAssignment(assignment)
+
             Toast.makeText(context,"Assignment Updated", Toast.LENGTH_SHORT)
                 .show()
-            assignment.assignmentName = assignmentName.text.toString()
 
+            val courseId = arguments?.getSerializable(ARG_COURSE_ID) as UUID
+            callbacks?.onUpdateAssignmentSelected(courseId)
         }
     }
 
-    private fun updateUI()
-    {
-        assignmentName.setText(assignment.assignmentName)
-    }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as AssignmentEditFragment.Callbacks?
+        callbacks = context as Callbacks?
     }
 
     override fun onDetach() {
@@ -96,5 +107,61 @@ class AssignmentEditFragment : Fragment() {
         callbacks = null
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val assignmentId = arguments?.getSerializable(ARG_ASSIGNMENT_ID) as UUID
+        val courseId = arguments?.getSerializable(ARG_COURSE_ID) as UUID
+
+        editCourseViewModel.loadCourse(courseId)
+        editCourseViewModel.courseLiveData.observe(
+            viewLifecycleOwner,
+            Observer { course ->
+                course?.let {
+                    this.course = course
+                    //Adding values to the assignment breakdown dropdown menu
+                    breakdownList = ArrayList()
+                    //Check if the breakdown is not empty, add to list if isn't
+                    if(course.breakdown1Name != "") breakdownList.add(course.breakdown1Name)
+                    if(course.breakdown2Name != "") breakdownList.add(course.breakdown2Name)
+                    if(course.breakdown3Name != "") breakdownList.add(course.breakdown3Name)
+                    if(course.breakdown4Name != "") breakdownList.add(course.breakdown4Name)
+                    if(course.breakdown5Name != "") breakdownList.add(course.breakdown5Name)
+
+                    breakdownSpinner.adapter = context?.let {
+                        ArrayAdapter(
+                            it,
+                            R.layout.assignment_breakdown_row,
+                            R.id.assignment_breakdown_row,
+                            breakdownList
+                        )
+                    }
+
+                }
+            }
+        )
+
+        editAssignmentViewModel.loadAssignment(assignmentId)
+        editAssignmentViewModel.assignmentLiveData.observe(
+            viewLifecycleOwner,
+            Observer { assignment ->
+                assignment?.let {
+                    this.assignment = assignment
+
+                    updateUI()
+                }
+            }
+        )
+    }
+
+    private fun updateUI()
+    {
+        assignmentName.setText(assignment.assignmentName)
+        currentPoints.setText(assignment.currentPoints.toString())
+        maximumPoints.setText(assignment.maximumPoints.toString())
+
+        // Set the dropdrown menu to a specific value
+        val select : Int? = (breakdownSpinner.adapter as ArrayAdapter<String>?)?.getPosition("${assignment.breakdownName}")
+        select?.let { it1 -> breakdownSpinner.setSelection(it1) }
+    }
 }
 
