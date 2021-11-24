@@ -5,7 +5,8 @@
       <map>
         <entry key="..\:/Github/gradeCheck/app/src/main/res/drawable/ic_launcher_background.xml" value="0.18" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/activity_main.xml" value="0.14" />
-        <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_add_assignment.xml" value="0.22" />
+        <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/assignment_breakdown_row.xml" value="0.22447916666666667" />
+        <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_add_assignment.xml" value="0.15" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_add_class.xml" value="0.1" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_add_course.xml" value="0.22" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_add_semester.xml" value="0.25" />
@@ -14,6 +15,7 @@
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_class_list.xml" value="0.1" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_course.xml" value="0.18489583333333334" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_edit_assignment.xml" value="0.33152173913043476" />
+        <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_edit_course.xml" value="0.17" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_item_list.xml" value="0.1762917933130699" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_semester.xml" value="0.25" />
         <entry key="..\:/Github/gradeCheck/app/src/main/res/layout/fragment_semester_edit.xml" value="0.20364583333333333" />

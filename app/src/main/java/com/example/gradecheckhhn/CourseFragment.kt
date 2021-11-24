@@ -1,16 +1,15 @@
 package com.example.gradecheckhhn
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.*
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -291,6 +290,9 @@ class CourseFragment : Fragment() {
             editAssignmentButton.setOnClickListener {
                 callbacks?.onEditAssignmentPressed(assignment.AssignmentID, course.CourseID,semester.id)
             }
+            deleteAssignmentButton.setOnClickListener {
+                deleteAssignment(this.assignment)
+            }
         }
 
         @SuppressLint("SetTextI18n")
@@ -354,4 +356,24 @@ class CourseFragment : Fragment() {
         }
     }
 
+    /* delete assignment */
+    private fun deleteAssignment(assignment: Assignment){
+        // Confirmation dialog
+        var builder =  AlertDialog.Builder(activity)
+        builder.setTitle("Delete Assignment")
+        builder.setMessage("Are you sure you want to delete ${assignment.assignmentName.uppercase()}?")
+        builder.setPositiveButton("Yes",DialogInterface.OnClickListener{dialog, id ->
+            assignmentListViewModel.deleteAssignment(assignment)
+
+            Toast.makeText(context,"${assignment.assignmentName.uppercase()} deleted", Toast.LENGTH_SHORT)
+                .show()
+            dialog.cancel()
+        })
+        builder.setNegativeButton("No", DialogInterface.OnClickListener { dialog, id->
+            dialog.cancel()
+        })
+
+        var alert: AlertDialog = builder.create()
+        alert.show()
+    }
 }

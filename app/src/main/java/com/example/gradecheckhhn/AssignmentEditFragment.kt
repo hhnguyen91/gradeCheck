@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.gradecheckhhn.databaseEntities.Assignment
 import java.util.*
@@ -28,16 +29,15 @@ class AssignmentEditFragment : Fragment() {
 
     private lateinit var updateAssignmentButton: Button
 
-    /*
-    private val editCourseViewModel: AssignmentEditViewModel by lazy {
+
+    private val editAssignmentViewModel: AssignmentEditViewModel by lazy {
         ViewModelProviders.of(this).get(AssignmentEditViewModel::class.java)
     }
-    */
 
     private var callbacks: Callbacks? = null
 
     interface Callbacks {
-        fun onUpdateAssignmentSelected()
+        fun onUpdateAssignmentSelected(semesterID: UUID, courseID: UUID)
     }
 
     override fun onCreateView(
@@ -45,14 +45,14 @@ class AssignmentEditFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //val view = inflater.inflate(R.layout.fragment_assignment_edit, container,false)
+        val view = inflater.inflate(R.layout.fragment_edit_assignment, container,false)
 
-        //assignmentName = view.findViewById(R.id.edit_assignment_name) as EditText
+        assignmentName = view.findViewById(R.id.edit_assignment_name) as EditText
         //breakdownName = view.findViewById(R.id.edit_assignment_breakdown_name) as EditText
-        //currentPoints = view.findViewById(R.id.edit_assignment_current_points) as EditText
-        //maximumPoints = view.findViewById(R.id.edit_assignment_max_points) as EditText
+        currentPoints = view.findViewById(R.id.edit_assignment_current_points) as EditText
+        maximumPoints = view.findViewById(R.id.edit_assignment_maximum_points) as EditText
 
-        //updateAssignmentButton = view.findViewById(R.id.update_assignment_button) as Button
+        updateAssignmentButton = view.findViewById(R.id.update_assignment_button) as Button
 
         return super.onCreateView(inflater, container, savedInstanceState)
     }
@@ -88,12 +88,26 @@ class AssignmentEditFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as AssignmentEditFragment.Callbacks?
+        callbacks = context as Callbacks?
     }
 
     override fun onDetach() {
         super.onDetach()
         callbacks = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val assignmentId = arguments?.getSerializable(ARG_ASSIGNMENT_ID) as UUID
+        editAssignmentViewModel.loadAssignment(assignmentId)
+        editAssignmentViewModel.assignmentLiveData.observe(
+            viewLifecycleOwner,
+            Observer { assignment ->
+                assignment?.let {
+                    this.assignment = assignment
+                }
+            }
+        )
     }
 
 }

@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity(),
     SemesterListFragment.Callbacks, AddSemesterFragment.Callbacks
     ,SemesterFragment.Callbacks, AddCourseFragment.Callbacks,
     SemesterEditFragment.Callbacks,CourseEditFragment.Callbacks,AddAssignmentFragment.Callbacks,
-    CourseFragment.Callbacks{
+    CourseFragment.Callbacks,AssignmentEditFragment.Callbacks{
 
     lateinit var currentSemesterID : UUID
     lateinit var currentCourseID : UUID
@@ -131,6 +131,7 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
+    // Direct user to the edit assignment form
     override fun onEditAssignmentPressed(assignmentID: UUID, courseID: UUID, semesterID: UUID) {
         Log.d(TAG,"Editing Assignment")
         val fragment = AssignmentEditFragment.newInstance(assignmentID,courseID,semesterID)
@@ -171,5 +172,9 @@ class MainActivity : AppCompatActivity(),
             .commit()
      }
 
+    // Direct user back to the course fragment
+    override fun onUpdateAssignmentSelected(semesterID: UUID, courseID: UUID) {
+        TODO("Not yet implemented")
+    }
 
 }

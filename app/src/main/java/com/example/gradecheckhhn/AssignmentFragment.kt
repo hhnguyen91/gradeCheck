@@ -38,7 +38,7 @@ class AssignmentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_assignment, container, false)
-        assignmentNameField = view.findViewById(R.id.add_assignment_name) as EditText
+        //assignmentNameField = view.findViewById(R.id.add_assignment_name) as EditText
         return view
     }
 
@@ -52,7 +52,7 @@ class AssignmentFragment : Fragment() {
             {
 
                 Log.d(TAG,"Directing user to create assignment form")
-                callbacks?.onAddAssignment(assignment.AssignmentID)
+                //callbacks?.onAddAssignment(assignment.AssignmentID)
                 true
             }
             else -> super.onOptionsItemSelected(item)
