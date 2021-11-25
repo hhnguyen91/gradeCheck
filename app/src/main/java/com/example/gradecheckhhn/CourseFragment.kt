@@ -320,6 +320,20 @@ class CourseFragment : Fragment() {
             breakdownFinalGrade = (currentPoints / maxPoints) * breakDownFinalWeight
         }
 
+        if(breakDownOneList.isNotEmpty() || breakDownTwoList.isNotEmpty() || breakDownThreeList.isNotEmpty() || breakDownFourList.isNotEmpty() || breakDownFiveList.isNotEmpty())
+        {
+            var currentGrade = breakdownOneGrade + breakdownTwoGrade + breakdownThreeGrade + breakdownFourGrade + breakdownFiveGrade
+            //What grade do I need
+            var neededGradeForA = ((course.minA - currentGrade) / breakDownFinalWeight) * 100
+            var neededGradeForB = ((course.minB - currentGrade) / breakDownFinalWeight) * 100
+            var neededGradeForC = ((course.minC - currentGrade) / breakDownFinalWeight) * 100
+
+            projectionforA.text = String.format("%.2f", neededGradeForA) + "%"
+            projectionforB.text = String.format("%.2f", neededGradeForB) + "%"
+            projectionforC.text = String.format("%.2f", neededGradeForC) + "%"
+
+        }
+
         var grade = ((breakdownOneGrade + breakdownTwoGrade + breakdownThreeGrade + breakdownFourGrade + breakdownFiveGrade + breakdownFinalGrade)/totalWeight) * 100
         val rounded = String.format("%.2f", grade)
         var letterGrade : String = "A"
