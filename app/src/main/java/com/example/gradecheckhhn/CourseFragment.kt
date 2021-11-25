@@ -56,6 +56,10 @@ class CourseFragment : Fragment() {
     private lateinit var assignmentRecyclerViewBreakdownFive: RecyclerView
     private lateinit var assignmentRecyclerViewBreakdownFinal: RecyclerView
 
+    private lateinit var projectionforA: TextView
+    private lateinit var projectionforB: TextView
+    private lateinit var projectionforC: TextView
+
     private var adapter: AssignmentAdapter = AssignmentAdapter(emptyList())
 
     private val editCourseViewModel: CourseEditViewModel by lazy {
@@ -129,6 +133,10 @@ class CourseFragment : Fragment() {
         assignmentRecyclerViewBreakdownFinal = view.findViewById(R.id.class_breakdown_Final)
         assignmentRecyclerViewBreakdownFinal.layoutManager = LinearLayoutManager(context)
         assignmentRecyclerViewBreakdownFive.adapter = adapter
+
+        projectionforA = view.findViewById(R.id.projection_for_A)
+        projectionforB = view.findViewById(R.id.projection_for_B)
+        projectionforC = view.findViewById(R.id.projection_for_C)
 
         val courseId = arguments?.getSerializable(ARG_COURSE_ID) as UUID
         Log.i(TAG,"Course: $courseId Selected")

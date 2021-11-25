@@ -55,4 +55,11 @@
     <string name="assignment_list_grade">Grade:</string>
     <string name="update_assignment">Update Assignment</string>
     <string name="class_grade">Grade: </string>
+    <string name="final_projections">Projection for desired final grade</string>
+    <string name="final_projection_for_A_Label">A:</string>
+    <string name="final_projection_for_B_Label">B:</string>
+    <string name="final_projection_for_C_Label">C:</string>
+    <string name="final_projection_for_A_percent">N/A</string>
+    <string name="final_projection_for_B_percent">N/A</string>
+    <string name="final_projection_for_C_percent">N/A</string>
 </resources>
