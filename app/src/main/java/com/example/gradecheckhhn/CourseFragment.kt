@@ -332,6 +332,14 @@ class CourseFragment : Fragment() {
             projectionforC.text = String.format("%.2f", neededGradeForC) + "%"
 
         }
+        // they already took the final so they don't need to guess what
+        // they need to know what they need to get on the final to get their final grade
+        if(breakDownFinalList.isNotEmpty())
+        {
+            projectionforA.text = "N/A"
+            projectionforB.text = "N/A"
+            projectionforC.text = "N/A"
+        }
 
         var grade = ((breakdownOneGrade + breakdownTwoGrade + breakdownThreeGrade + breakdownFourGrade + breakdownFiveGrade + breakdownFinalGrade)/totalWeight) * 100
         val rounded = String.format("%.2f", grade)
