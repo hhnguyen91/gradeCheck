@@ -74,7 +74,6 @@ class CourseFragment : Fragment() {
     interface Callbacks {
         fun onEditAssignmentPressed(assignmentID: UUID, courseId: UUID, semesterId: UUID)
         fun onAddAssignmentSelected(courseId: UUID, semesterId: UUID)
-        fun onAssignmentSelected(assignmentID: UUID)
         fun refreshAssignmentPage()
     }
 
@@ -492,7 +491,6 @@ class CourseFragment : Fragment() {
         }
 
         override fun onClick(v: View?) {
-            callbacks?.onAssignmentSelected(assignment.AssignmentID)
         }
     }
 

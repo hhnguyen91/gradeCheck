@@ -151,17 +151,6 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
-    override fun onAssignmentSelected(assignmentID: UUID) {
-        currentAssignmentID = assignmentID
-        val fragment = AssignmentFragment.newInstance(currentAssignmentID)
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
-            .commit()
-
-    }
-
     override fun refreshAssignmentPage() {
         val fragment = CourseFragment.newInstance(currentCourseID)
         supportFragmentManager
