@@ -10,6 +10,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.*
 import android.widget.*
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -75,6 +76,7 @@ class CourseFragment : Fragment() {
         fun onEditAssignmentPressed(assignmentID: UUID, courseId: UUID, semesterId: UUID)
         fun onAddAssignmentSelected(courseId: UUID, semesterId: UUID)
         fun refreshAssignmentPage()
+        fun backToSemesterFragment()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,6 +86,12 @@ class CourseFragment : Fragment() {
         assignmentListViewModelFactory = AssignmentListViewModelFactory(courseId)
         assignmentListViewModel = ViewModelProvider(this, assignmentListViewModelFactory).get(AssignmentListViewModel::class.java)
         setHasOptionsMenu(true)
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                callbacks?.backToSemesterFragment()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
     }
 

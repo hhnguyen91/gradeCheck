@@ -10,6 +10,8 @@ import android.widget.TextView
 import android.widget.Toast
 import android.app.AlertDialog
 import android.widget.Button
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProviders
@@ -49,6 +51,7 @@ class SemesterFragment : Fragment() {
         //Should Direct user to create course Screen
         fun onAddCourseSelected(semesterId: UUID)
         fun onEditCoursePressed(courseId: UUID, semesterId: UUID)
+        fun backToSemesterList()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +64,15 @@ class SemesterFragment : Fragment() {
         courseListViewModel = ViewModelProvider(this, courseListViewModelFactory).get(CourseListViewModel::class.java)
         // Must be true for the app bar change to happen
         setHasOptionsMenu(true)
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                callbacks?.backToSemesterList()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,6 +87,8 @@ class SemesterFragment : Fragment() {
         courseRecyclerView.adapter = adapter
 
         val semesterId = arguments?.getSerializable(ARG_SEMESTER_ID) as UUID
+
+
 
 
 
@@ -234,4 +247,8 @@ class SemesterFragment : Fragment() {
          alert.show()
 
     }
+}
+
+private fun OnBackPressedDispatcher.addCallback(semesterFragment: SemesterFragment, function: () -> Unit) {
+
 }

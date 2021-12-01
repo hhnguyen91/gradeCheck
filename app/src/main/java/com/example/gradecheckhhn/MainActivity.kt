@@ -111,6 +111,15 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
+    override fun backToSemesterList() {
+        val fragment = SemesterListFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
     override fun onUpdateCourseSelected(semesterId: UUID) {
         val fragment = SemesterFragment.newInstance(semesterId)
         supportFragmentManager
@@ -153,6 +162,15 @@ class MainActivity : AppCompatActivity(),
 
     override fun refreshAssignmentPage() {
         val fragment = CourseFragment.newInstance(currentCourseID)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun backToSemesterFragment() {
+        val fragment = SemesterFragment.newInstance(currentSemesterID)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
